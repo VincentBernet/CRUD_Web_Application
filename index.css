@@ -12,9 +12,9 @@
     padding: 8px;
   }
 
-  #user tr:nth-child(even){background-color: #f2f2f2;}
+  #user tr:nth-child(even){background-color: transparent}
 
-  #user tr:hover {background-color: #ddd;}
+  #user tr:hover {background-color: #ff1d58;}
 
   #user th
   {
@@ -30,26 +30,26 @@
   }
 
 body {
-  color: white;
+color: white;
 margin-left:10%;
 margin-right:10%;
 padding:0;
 font-family: sans-serif;
 background: linear-gradient(#141e30, #243b55);
 }
-a
-{
-  text-align:center;font-family: Georgia, serif;font-size: 16px;letter-spacing: 0px;word-spacing: 0px;color: #FFB8FF;font-weight: 400;text-decoration: none solid rgb(68, 68, 68);font-style: italic;font-variant: normal;text-transform: none;
-
-}
 .Titre
 {
-  margin-top:25px;text-align:center;font-family: Georgia, serif;font-size: 32px;letter-spacing: 0px;word-spacing: 0px;color: #FFB8FF;font-weight: 400;text-decoration: none solid rgb(68, 68, 68);font-style: italic;font-variant: normal;text-transform: none;
+  margin-top:50px;text-align:center;font-family: Georgia, serif;font-size: 32px;letter-spacing: 0px;word-spacing: 0px;color: #FFB8FF;font-weight: 400;text-decoration: none solid rgb(68, 68, 68);font-style: italic;font-variant: normal;text-transform: none;
 }
+a
+{
+  font-family: Georgia, serif;font-size: 16px;letter-spacing: 0px;word-spacing: 0px;color: #FFB8FF;font-weight: 400;text-decoration: none solid rgb(68, 68, 68);font-style: italic;font-variant: normal;text-transform: none;
+}
+
 .login-box
 {
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 50%;
   width: 400px;
   padding: 40px;

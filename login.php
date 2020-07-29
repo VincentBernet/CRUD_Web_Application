@@ -1,28 +1,32 @@
+<!--                             Bernet Vincent week 2's assignment of "Building web application" course from Coursera -->
 <html>
+
   <head>
-    <title>Bernet Vincent assignment-autos</title>
+    <title>Bernet Vincent assignment-login c7c78f10</title>
   <link type="text/css" rel="stylesheet" href="index.css">
   </head>
 
   <body>
     <?php
       require_once "pdo.php";
-        /*if(isset($_POST["name"]===false)&&(isset($_POST["email"])===false))
+
+        /* First Test : if(isset($_POST["who"]===false)&&(isset($_POST["email"])===false))
         {
           echo'hi';
         }
-        if (($_POST["name"]=='')||($_POST["password"])=='')
+        if (($_POST["who"]=='')||($_POST["pass"])=='')
         {
-          echo'Email and password are required !';
+          echo'Email and pass are required !';
         }
-        else if(strpos($_POST["name"],'@') === false)
+        else if(strpos($_POST["who"],'@') === false)
         {
-          echo'Your Name must contain at least one @';
+          echo'Your who must contain at least one @';
         }
-        else if((isset($_POST["name"]))&&($_POST["password"]!='123'))
+        else if((isset($_POST["who"]))&&($_POST["pass"]!='123'))
         {
-          echo'Incorrect password';
+          echo'Incorrect pass';
         }*/
+
         $failure = false;
         $salt = 'XyZzy12*_';
         $stored_hash = '1a52e17fa899cf40fb04cfc42e6352f1';
@@ -30,47 +34,48 @@
         {
           header("Location: index.php?");
         }
-        if ( isset($_POST['name']) && isset($_POST['password']) )
+        if ( isset($_POST['who']) && isset($_POST['pass']) )
         {
 
-            if ( strlen($_POST['name']) < 1 || strlen($_POST['password']) < 1 )
+            if ( strlen($_POST['who']) < 1 || strlen($_POST['pass']) < 1 )
             {
                 $failure = "Email and password are required";
             }
-            else if (strpos($_POST["name"],'@') === false)
+            else if (strpos($_POST["who"],'@') === false)
             {
-              $failure='Your Name must contain at least one @';
+              $failure='Email must have an at-sign (@)';
             }
             else
             {
-                $check = hash('md5', $salt.$_POST['password']);
+                $check = hash('md5', $salt.$_POST['pass']);
                 if ( $check == $stored_hash ) {
                     // Redirect the browser to game.php
-                    $_GET['name']=$_POST['name'];
-                    header("Location: autos.php?name=".urlencode($_GET['name']));
+                    $_GET['who']=$_POST['who'];
+                    error_log("Login sucess ".$_POST["who"]."$check");
+                    header("Location: autos.php?who=".urlencode($_GET['who']));
                     return;
                 } else {
-                    echo'error_log("Login fail ".$_POST["name"]." $check")';
+                    error_log("Login fail ".$_POST["who"]."$check");
+
                     $failure = "Incorrect password";
                 }
             }
         }
         if ( $failure !== false ) {
-            // Look closely at the use of single and double quotes
             echo('<br><br><br><br><p style="color: white;text-align:center;">'.htmlentities($failure)."</p>\n");
         }?>
 
         <div class="Titre">
-         Login Time<br></div>
+         Login Time<br>Please Log In</div>
     <div class="login-box">
       <h2>Login</h2>
       <form method="post">
         <div class="user-box">
-          <input type="text" name="name" size="40" value="  ">
-          <label>User Name</label>
+          <input type="text" name="who" size="40" value="  ">
+          <label>User name</label>
         </div>
         <div class="user-box">
-          <input type="password" name="password" size="40" >
+          <input type="pass" name="pass" size="40" >
           <label>Password</label>
         </div>
         <a href="#">
@@ -86,12 +91,30 @@
   </form>
   <div style="position:relative; margin-top:550px; text-align:center">
 Do you wanna a small hints for the password ?<br><br>
-    <input type="radio" name="choice" value="Yes" checked/>
+<form>
+    <input type="radio" name="choice" value="Yes"/>
       <label for="Yes">Yes</label>
     <input type="radio" name="choice" value="No"/>
       <label for="No">No</label>
-<br> <br>
-    The password is your favorite programming language followed by the 3 first digit after 0
+      <input type="submit" name="hint"/>
+    </form>
+<br>
+    <?php
+    if (isset($_GET["choice"]))
+    {
+
+    if ($_GET["choice"]=='Yes')
+    {
+      $Response='inline';
+    }
+    else {
+      $Response='none';
+      echo'good luck so !';
+    }
+
+    echo'<div style="display:'.$Response.'";>The password is your favorite programming language followed by the 3 first digit after 0 </div>';}?>
+
+
   </div>
   </body>
 
