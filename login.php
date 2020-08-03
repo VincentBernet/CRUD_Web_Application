@@ -62,7 +62,7 @@
               $_SESSION["Impact"]="Logged In.<br>";
               // Save our error_log just in case
               error_log("Login sucess ".$_POST["email"]."$check");
-              header("Location: view.php");
+              header("Location: index.php");
               return;
           } // Bad password
             else {
@@ -98,8 +98,8 @@
       </div>
 
       <div class="user-box">
-        <label for="id_1723">Password</label><br><br>
-        <input type="password" name="pass" id="pass">
+        <label for="pass">Password</label><br><br>
+        <input type="text" name="pass" id="pass">
       </div>
 
       <a href="#">

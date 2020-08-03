@@ -20,43 +20,45 @@
     session_start();
     if (!isset($_SESSION['email']))
     {
-      die("<div style='text-align:center;color:pink;weight:bold;font-size:35px;margin-top:10%;'>Not log in <br> <a href='index.php'>Back to Index</a></div>");
+      die("<div style='text-align:center;color:pink;weight:bold;font-size:35px;margin-top:10%;'>ACCESS DENIED<br> <a href='index.php'>Back to Index</a></div>");
     }
 
     if (isset($_POST['cancel']))
     {
-      header("Location: view.php");
+      header("Location: index.php");
       return;
     }
 
-    if(isset($_POST["make"])&&isset($_POST["year"])&&isset($_POST["mileage"]))
+    if(isset($_POST["make"])&&isset($_POST["year"])&&isset($_POST["mileage"])&&isset($_POST["model"]))
     {
       $_SESSION["make"]=$_POST["make"];
+      $_SESSION["model"]=$_POST["model"];
       $_SESSION["year"]=$_POST["year"];
       $_SESSION["mileage"]=$_POST["mileage"];
 
-        if ($_POST['make']=='')
+        if (($_POST['make']=='')||($_POST['model']=='')||($_POST['year']=='')||($_POST['mileage']==''))
         {
-          $_SESSION["message"]="<div style='color:red; text-align: center;'>Make is required</div>";
+          $_SESSION["message"]="<div style='color:red; text-align: center;'>All values are required</div>";
           header("Location: add.php");
           return;
         }
         else if ((is_numeric($_POST["year"])&&(is_numeric($_POST["mileage"]))))
         {
-        $sql = "INSERT INTO autos(make, year, mileage) VALUES (:make,:year,:mileage)";
+        $sql = "INSERT INTO autos(make,model, year, mileage) VALUES (:make,:model,:year,:mileage)";
         $result1 = $pdo->prepare($sql);
         $result1->execute(array
         (':make' => htmlentities($_POST['make']),
+        ':model' => htmlentities($_POST['model']),
         ':year' => htmlentities($_POST['year']),
         ':mileage' => htmlentities($_POST['mileage']),
       ));
-        $_SESSION["message"]="<div style='color:green; text-align: center;'>Record inserted</div>";
-        header("Location: view.php");
+        $_SESSION["message"]="<div style='color:green; text-align: center;'>added</div>";
+        header("Location: index.php");
         return;
       }
       else if (!is_numeric($_POST["year"])||(!is_numeric($_POST["mileage"])))
       {
-        $_SESSION["message"]="<div style='color:red; text-align: center;'>Mileage and year must be numeric</div>";
+        $_SESSION["message"]="<div style='color:red; text-align: center;'>Mileage and year must be numeric<br><br></div>";
         header("Location: add.php");
         return;
       }
@@ -81,12 +83,16 @@
     <div class="user-box">
 <p>Make:
 <input type="text" name="make" size="30"/></p></div>
+<div class="user-box">
+<p>Model:
+<input type="text" name="model" size="28"/></p> </div>
   <div class="user-box">
 <p>Year:
 <input type="text" name="year" size="31"/></p></div>
   <div class="user-box">
 <p>Mileage:
 <input type="text" name="mileage" size="28"/></p> </div>
+
 <a href="#">
   <span></span>
   <span></span>
