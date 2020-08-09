@@ -1,6 +1,9 @@
-<!-- Bernet Vincent week 1's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
+<!-- Bernet Vincent week 2's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
+<!-- Added some jQuerry to show and insert or not new Position (with a new table eponyme) -->
+
 <?php
 require_once "pdo.php";
+require_once "utility.php";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -9,36 +12,25 @@ session_start();
   <title> Vincent Bernet Index</title>
   <!-- Personal CSS -->
   <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
 </head>
 <body>
   <?php
-
-
-  // View Part :
-
-  //Test to see if the user_id is in fact in our $_SESSION so we can manage index.php to only permit user to delet or edit their own profile
-  /*if (isset($_SESSION['user_id']))
-  {
-    echo('<p style="color:green; text-align:center">'.$_SESSION['user_id'].'</p>');
-  }*/
-
+  // Begining of the View Part :
   // Flash Message : print the result of our login / add / Logout / register action
-  if (isset($_SESSION['message']))
-  {
-    echo('<p style="color:green; text-align:center">'.$_SESSION['message'].'</p>');
-    unset($_SESSION['message']);
-  }
+  flashMessages();
 
-  // If we are not login yet
+  // If we are not login yet : first page
   if (!isset($_SESSION["email"]))
   {
   echo('    <div class="container">
   <br>
-            <div class="Titre2">Bernet Vincent\'s Resume Registry</div>
+            <div class="Titre2">Bernet Vincent\'s Resume Registry</div><br><br>
             <p><a href="login.php">Please log in</a> or if you don\'t have an account yet, you can <a a href="register.php"> Register here</a></p>
             <p>Attempt to <a href="add.php">add data</a> without logging in</p>
-          <a href="logout.php">Logout</a>');}
-  // When we are login-in :
+          ');}
+
+  // When we are login-in : seconde page
   else
   {
   echo("<div class='Titre'>Vincent Bernet's Resume Registry<br>Welcome to :".$_SESSION['name']."</div>");
@@ -50,12 +42,13 @@ session_start();
   $stmt->execute(array(
     ':user_id' => $_SESSION['user_id'],));*/
 
-
+  echo('<br><br><br>');
   $stmt = $pdo->query("SELECT user_id,profile_id,first_name,last_name,	headline FROM profile");
 
-  while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+  while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
+  {
       echo "<tr><td>";
-      echo("<a href='#'>".htmlentities($row['first_name'])."</a  |".htmlentities($row['last_name']));
+      echo("<a href='view.php?profile_id=".$row['profile_id']."'>".htmlentities($row['first_name'])."</a  |".htmlentities($row['last_name']));
       echo("</td><td>");
       echo(htmlentities($row['headline']));
       echo("</td><td>");
@@ -117,3 +110,4 @@ session_start();
 
 
 </body>
+</html>

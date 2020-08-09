@@ -1,4 +1,5 @@
-<!-- Bernet Vincent week 1's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
+<!-- Bernet Vincent week 2's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
+<!-- Added some jQuerry to show and insert or not new Position (with a new table eponyme) -->
 
 <!DOCTYPE html>
 <html>
@@ -6,6 +7,7 @@
 <title> Vincent Bernet Login</title>
   <!-- Personal CSS -->
 <link rel="stylesheet" href="index.css">
+<meta charset="UTF-8" />
 <body>
   <?php
 
@@ -18,6 +20,8 @@
   session_regenerate_id(true);
   // We connect to our data base via our function in an external files
   require_once "pdo.php";
+  // We call our personnal librairy
+  require_once "utility.php";
   // We hash our password
   $stored_hash = '1a52e17fa899cf40fb04cfc42e6352f1';
   if (isset($_POST['cancel']))
@@ -32,13 +36,13 @@
       // Bunch of condition on the user input, if they are not verified then no insert in DataBase and some indication are send
       if ( strlen($_POST['email']) < 1 || strlen($_POST['pass']) < 1 )
       {
-          $_SESSION["message"] = "Email and password are required";
+          $_SESSION["message"] = '<span style="color:red;weight:bold;text-aligne:center;">Email and password are required</span>';
           header("Location: login.php");
           return;
       }
       else if (strpos($_POST["email"],'@') === false)
       {
-        $_SESSION["message"] ='Email must have an at-sign (@)';
+        $_SESSION["message"] ='<span style="color:red;weight:bold;text-aligne:center;">Email must have an at-sign (@)</span>';
         header("Location: login.php");
         return;
       }
@@ -57,7 +61,7 @@
               $_SESSION['email']=$_POST['email'];
               $_SESSION['name'] = $row['name'];
               $_SESSION['user_id'] = $row['user_id'];
-              $_SESSION["message"]="Logged In.<br>";
+              $_SESSION["message"]='<span style="color:green;weight:bold;text-aligne:center;">Logged In.</span><br>';
               // Save our error_log just in case
               error_log("Login sucess ".$_POST["email"]."$check");
               header("Location: index.php");
@@ -66,7 +70,7 @@
             else {
 
               error_log("Login fail ".$_POST["email"]."$check");
-              $_SESSION["message"] = "Password and Email don't match (Incorrect Password or Incorrect Email).";
+              $_SESSION["message"] = '<span style="color:red;weight:bold;text-aligne:center;">Password and Email don\'t match (Incorrect Password or Incorrect Email).';
               unset($_SESSION["email"]);
               header("Location: login.php");
               return;
@@ -78,31 +82,36 @@
   ?>
 
   <?php
-  // Message if log-in, or not, or specification on what is wrong with users input
-      if ( isset($_SESSION["message"]) ) {
-          echo('<br><p style="color:red; text-align:center">'.$_SESSION["message"]."</p>");
-          unset($_SESSION["message"]);
-      }
+
+  // Flash Message if log-in, or not, or specification on what is wrong with users input
+      flashMessages();
   ?>
   <br><br>
-<div class="container">
-<div class="Titre2">Please Log In</div>
-<form method="POST" action="login.php">
-<label for="email">Email</label>
-<input type="text" name="email" id="email"><br/>
-<label for="id_1723">password</label>
-<input type="password" name="pass" id="id_1723"><br/>
-<input type="submit" onclick="return doValidate();" value="Log In">
-<input type="submit" name="cancel" value="Cancel">
-</form>
+<div class="login-box">
+  <div class="Titre2">Please Log In</div>
+  <form method="POST" action="login.php">
+
+    <div class="user-box">
+      <p>Email:
+        <input type="text" name="email" id="email">
+      </p>
+    </div>
+    <span class="user-box">
+      Password:
+        <input type="password" name="pass" id="id_1723">
+    </span>
+    <a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <input class="myButton" type="submit" onclick="return doValidate();" value="Log In">
+      <input class="myButton" type="submit" name="cancel" value="Cancel">
+    </a>
+  </form>
 <p>
-For a password hint, view source and find an account and password hint
-in the HTML comments.
-<!-- Hint:
-The account is umsi@umich.edu
-The password is the three character name of the
-programming language used in this class (all lower case)
-followed by 123. -->
+  For a password hint, view source and find an account and password hint
+  in the HTML comments.
 </p>
 
 <script>
@@ -127,6 +136,10 @@ function doValidate() {
     return false;
 }
 </script>
-
+  <!-- Hint:
+  The account is umsi@umich.edu
+  The password is the three character name of the
+  programming language used in this class (all lower case)
+  followed by 123. -->
 </div>
 </body>

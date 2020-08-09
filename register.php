@@ -1,4 +1,5 @@
-<!-- Bernet Vincent week 1's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
+<!-- Bernet Vincent week 2's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
+<!-- Added some jQuerry to show and insert or not new Position (with a new table eponyme) -->
 
 <!DOCTYPE html>
 <html>
@@ -8,6 +9,7 @@
 
 <!-- My personal css -->
 <link rel="stylesheet" href="index.css">
+<meta charset="UTF-8" />
 
 <body>
   <?php
@@ -82,8 +84,8 @@
   <span></span>
   <span></span>
   <span></span>
-<input type="submit" value="register"/>
-<input type="submit" name ="cancel" value="Cancel"/>
+<input class="myButton" type="submit" value="register"/>
+<input class="myButton" type="submit" name ="cancel" value="Cancel"/>
 </a>
 </form>
 </ul>
