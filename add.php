@@ -1,15 +1,21 @@
-<!-- Bernet Vincent week 2's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
-<!-- Added so jQuerry to show and insert or not new Position (with a new table eponyme) -->
+<!-- Bernet Vincent Crud Application -->
+<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Bernet Vincent Add</title>
-
-
-  <!-- Personal CSS -->
+<!-- Personal Css file common for every page -->
 <link rel="stylesheet" href="index.css">
+<!-- Don't forget to call jQuerry librairy -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bunch of optinal commodity to make it looks better -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+
 <meta charset="UTF-8" />
 <body>
   <?php
@@ -27,6 +33,9 @@
       header("Location: index.php");
       return;
     }
+
+
+
     flashMessages();
     if ( isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email']) && isset($_POST['headline']) && isset($_POST['summary']) )
     {
@@ -46,6 +55,15 @@
             header('Location: add.php');
             return;
           }
+
+          $msg = validateEdu();
+          if (is_string($msg))
+          {
+            $_SESSION['message'] = $msg;
+            header('Location: add.php');
+            return;
+          }
+
           // Data are valid we can insert now
           $_SESSION["first_name"]=$_POST["first_name"];
           $_SESSION["last_name"]=$_POST["last_name"];
@@ -66,26 +84,13 @@
           ));
           $profile_id=$pdo->lastInsertId();
 
-          // Time to insert now the position entries in the table corresponding
-          $rank = 1;
-          for ($i=1; $i<=9; $i++)
-          {
-            if (!isset($_POST['year'.$i])) continue;
-            if (!isset($_POST['description'.$i])) continue;
-            $year = $_POST['year'.$i];
-            $description = $_POST['description'.$i];
+          insertPositions($pdo, $profile_id);
+          insertEducations($pdo, $profile_id);
 
-            $stmt = $pdo->prepare('INSERT INTO Position
-              (profile_id, rank, year, description )
-              VALUES (:profile_id,:rank,:year,:description)');
-            $stmt-> execute(array(
-              ':profile_id' => $profile_id,
-              ':rank' => $rank,
-              ':year' => $year,
-              ':description' => $description)
-            );
-            $rank++;
-          }
+
+
+
+
           $_SESSION["message"]="<div style='color:green; text-align: center;'>Your new profile as been added</div>";
           header("Location: index.php");
           return;
@@ -129,9 +134,18 @@
         <textarea style ="background:#19273c;color:white;" name="summary" rows="3" cols="45" ></textarea>
       </p>
     </div>
+    <div class="user-box">
+    <p>  School: &nbsp&nbsp&nbsp&nbsp&nbsp<button id = "addEdu" type="button" >
+       +
+    </button>
+    <!--<input type="text" size="80" name="edu_school1" class="school" value="" />-->
+
+    </p></div>
+      <div id="education_fields">
+      </div>
 
     <div class="user-box">
-      <p> Position:
+      <p> Position: &nbsp&nbsp
         <button id = "addPos" type="button" >
            +
         </button>
@@ -171,9 +185,28 @@
           </div><br>');
 
     }
-  );}
-
   );
+  countEdu = 0;
+  $("#addEdu").click(function(event){
+    event.preventDefault();
+    if (countEdu>=9){
+      alert("Maximum of nine education entries exceeded");
+      return;
+    }
+    countEdu++;
+    window.console && console.log('Adding education'+countEdu);
+    $('#education_fields').append(
+      '<div id="education'+countEdu+'"> \
+      <input type="button" value="-" \
+        onclick= "window.console && console.log(\'Removing education'+countEdu+'\');countEdu--;$(\'#education'+countEdu+'\').remove();return false;"> Year: <input type="text" name="edu_year'+countEdu+'" value=""/>  \
+        <textarea name="edu_school'+countEdu+'"style="background:#19273c;color:white;" rows="2" cols="45"></textarea>\
+        </div><br>');
+
+  }
+);
+
+}
+);
 </script>
 </div>
 

@@ -1,5 +1,5 @@
-<!-- Bernet Vincent week 2's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
-<!-- Added some jQuerry to show and insert or not new Position (with a new table eponyme) -->
+<!-- Bernet Vincent Crud Application -->
+<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
 
 <?php
 require_once "pdo.php";
@@ -10,7 +10,7 @@ session_start();
 <html>
 <head>
   <title>Vincent Bernet Delete</title>
-    <!-- Personal CSS -->
+  <!-- Personal Css file common for every page -->
   <link rel="stylesheet" href="index.css">
   <meta charset="UTF-8" />
 </head>

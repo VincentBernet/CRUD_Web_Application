@@ -1,29 +1,30 @@
-<!-- Bernet Vincent week 2's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
-<!-- Added some jQuerry to show and insert or not new Position (with a new table eponyme) -->
+<!-- Bernet Vincent Crud Application -->
+<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
 
 <!DOCTYPE html>
 <html>
 <head>
 <title> Vincent Bernet Login</title>
-  <!-- Personal CSS -->
+<!-- Personal Css file common for every page -->
 <link rel="stylesheet" href="index.css">
 <meta charset="UTF-8" />
 <body>
+
   <?php
-
-
-  // We start our session and we also regenerate our id, if previously we destroy the session
+  // We start our session and we also regenerate our id, in case if previously we destroyed the session
   // So if for exemple the last id session was 12623 and we had destroy it,
   // it will be put back in the random pool of number of the web server id.
-
   session_start();
   session_regenerate_id(true);
+
   // We connect to our data base via our function in an external files
   require_once "pdo.php";
   // We call our personnal librairy
   require_once "utility.php";
   // We hash our password
   $stored_hash = '1a52e17fa899cf40fb04cfc42e6352f1';
+
+  // Redirection to index if cancel button is clicked
   if (isset($_POST['cancel']))
   {
     header("Location: index.php");
@@ -40,6 +41,7 @@
           header("Location: login.php");
           return;
       }
+
       else if (strpos($_POST["email"],'@') === false)
       {
         $_SESSION["message"] ='<span style="color:red;weight:bold;text-aligne:center;">Email must have an at-sign (@)</span>';
@@ -57,7 +59,7 @@
 
           $row = $stmt->fetch(PDO::FETCH_ASSOC);
           if ( $row!==false ) {
-              // Right password so Redirect the browser to our view.php and add $_POST value to our Session
+              // Right password so we redirect the browser to our index.php and add $_POST value to our Session
               $_SESSION['email']=$_POST['email'];
               $_SESSION['name'] = $row['name'];
               $_SESSION['user_id'] = $row['user_id'];
@@ -66,7 +68,7 @@
               error_log("Login sucess ".$_POST["email"]."$check");
               header("Location: index.php");
               return;
-          } // Bad password
+          } // in case of Bad password, load login page again, with an error message via our session
             else {
 
               error_log("Login fail ".$_POST["email"]."$check");
@@ -79,14 +81,12 @@
           }
       }
   }
-  ?>
-
-  <?php
 
   // Flash Message if log-in, or not, or specification on what is wrong with users input
       flashMessages();
   ?>
   <br><br>
+  <!-- Our login form -->
 <div class="login-box">
   <div class="Titre2">Please Log In</div>
   <form method="POST" action="login.php">
@@ -100,6 +100,8 @@
       Password:
         <input type="password" name="pass" id="id_1723">
     </span>
+
+    <!-- Our submit_box, those span tag are kind of desorienting i know, but they are just here to do some animation in css later (check index.css file) -->
     <a href="#">
       <span></span>
       <span></span>
@@ -110,10 +112,14 @@
     </a>
   </form>
 <p>
-  For a password hint, view source and find an account and password hint
+  For a password hint, view source and find an account and password hint   <!-- Hint:
+                                                                            The account is umsi@umich.edu
+                                                                            The password is the three character name of the
+                                                                            programming language used in this class (all lower case)
+                                                                            followed by 123. -->
   in the HTML comments.
 </p>
-
+<!-- Some JavaScript validation, with pop up alert if wrong value entered -->
 <script>
 function doValidate() {
     console.log('Validating...');
@@ -136,10 +142,6 @@ function doValidate() {
     return false;
 }
 </script>
-  <!-- Hint:
-  The account is umsi@umich.edu
-  The password is the three character name of the
-  programming language used in this class (all lower case)
-  followed by 123. -->
+
 </div>
 </body>

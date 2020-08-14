@@ -1,6 +1,7 @@
-<!-- Bernet Vincent week 2's assignment of "JavaScript, jQuery, and JSON" course from Coursera -->
-<!-- Added some jQuerry to show and insert or not new Position (with a new table eponyme) -->
+<!-- Bernet Vincent Crud Application -->
+<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
 
+<!-- To begin with we call our pdo to link our php to our database, and we also call our utility php files, which is usefull for many functions. we end up by calling our session. -->
 <?php
 require_once "pdo.php";
 require_once "utility.php";
@@ -11,8 +12,9 @@ session_start();
 <html>
 <head>
   <title>Vincent Bernet Edit</title>
-    <!-- Personal CSS -->
+  <!-- Personal Css file common for every page -->
   <link rel="stylesheet" href="index.css">
+  <!-- Don't forget to call jQuerry librairy -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <meta charset="UTF-8" />
@@ -41,30 +43,14 @@ if (! isset($_REQUEST['profile_id']))
   return;
 }
 
-//flash patern
+// Fourth : Flash Message -> print the result of our login / add / Logout / register action
 flashMessages();
 
-$msg = validatePos();
-if (is_string($msg))
-{
-  $_SESSION['message'] = $msg;
-  header('Location: edit.php?profile_id='. $_REQUEST["profile_id"]);
-  return;
-}
-/*
-// Second: make sure that the profile_id that we want to edit is in the url
-if ( ! isset($_GET['profile_id']) && !($_POST['profile_id']) ) {
-  $_SESSION['message'] = '<span style="color:red;weight:bold;text-aligne:center;">Missing user_id</span>';
-  header('Location: index.php');
-  return;
-}*/
-
-
-// Third: We can now start obsverving our data in our form and proceed to the update
+// Fifth: We can now start obsverving our data in our form and proceed to the update
 if ( isset($_POST['first_name']) && isset($_POST['last_name'])&& isset($_POST['email'])&& isset($_POST['headline']) && isset($_POST['summary']) )
 {
 
-  // Data validation in our utility file, if false we stop and print the error on the index
+  // Data validation of basic inputs in our utility file, if false we stop and print the error on the index
   $msg = validateProfile2();
   if (is_string($msg))
   {
@@ -73,6 +59,26 @@ if ( isset($_POST['first_name']) && isset($_POST['last_name'])&& isset($_POST['e
     return;
   }
 
+  // Data validation in our utility file on Position related inputs, if false we stop and print the error on the index
+  $msg = validatePos();
+  if (is_string($msg))
+  {
+    $_SESSION['message'] = $msg;
+    header('Location: edit.php?profile_id='. $_REQUEST["profile_id"]);
+    return;
+  }
+
+
+  // Data validation in our utility file on Education related inputs, if false we stop and print the error on the index
+  $msg = validateEdu();
+  if (is_string($msg))
+  {
+    $_SESSION['message'] = $msg;
+    header('Location: edit.php?profile_id='. $_REQUEST["profile_id"]);
+    return;
+  }
+
+  //Begin to update our DataBase Profiles
   $sql = "UPDATE profile SET first_name = :first_name, last_name = :last_name, email = :email, headline = :headline, summary = :summary
           WHERE profile_id=:profile_id AND user_id= :user_id";
   $stmt = $pdo->prepare($sql);
@@ -91,33 +97,25 @@ if ( isset($_POST['first_name']) && isset($_POST['last_name'])&& isset($_POST['e
   $stmt -> execute(array( ':profile_id' => $_REQUEST['profile_id']));
 
   // Insert the position entries
+  insertPositions($pdo, $_REQUEST['profile_id']);
 
-  $rank = 1;
-  for ($i=1; $i<=9; $i++)
-  {
-    if (!isset($_POST['year'.$i])) continue;
-    if (!isset($_POST['description'.$i])) continue;
-    $year = $_POST['year'.$i];
-    $desc = $_POST['year'.$i];
-    $stmt = $pdo->prepare('INSERT INTO Position
-      (profile_id, rank, year, description )
-      VALUES (:profile_id,:rank,:year,:description)');
-    $stmt-> execute(array(
-      ':profile_id' => $profile_id,
-      ':rank' => $rank,
-      ':year' => $year,
-      ':description' => $description)
-    );
-    $rank++;
-  }
+  // Clear out the old educations entries
+  $stmt = $pdo -> prepare('DELETE FROM Education WHERE profile_id=:profile_id');
+  $stmt -> execute(array( ':profile_id' => $_REQUEST['profile_id']));
+
+  // Insert the education entries
+  insertEducations($pdo, $_REQUEST['profile_id']);
+
   $_SESSION['message'] = '<span style="color:green;weight:bold;text-aligne:center;">Record Updated</span>';
   header( 'Location: index.php' ) ;
   return;
 }
 
+//load up all the positions and educations rows
 $positions=loadPos($pdo,$_REQUEST['profile_id']);
+$schools= loadEdu($pdo,$_REQUEST['profile_id']);
 
-// Fourth: Verify is this profile_id exist (if it correspond to a row in our database)
+// Sixth: Verify is this profile_id exist (if it correspond to a row in our database)
 $stmt = $pdo->prepare("SELECT * FROM profile where profile_id = :profile_id");
 $stmt->execute(array(":profile_id" => $_GET['profile_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -135,15 +133,12 @@ $q = htmlentities($row['headline']);
 $v =  htmlentities($row['summary']);
 $y = htmlentities($row['profile_id']);
 $profile_id = $row['profile_id'];
-//$textPosition = $row['description'];
-//$yearPosition = $row['year'];
 
-// Return to index.php without changing anything if we click on cancel button
 
 ?>
-
+<br>
 <div class="container">
-  <h1>Editing Profile for UMSI</h1>
+  <h1 class="Titre2">Editing Profile for UMSI</h1>
   <form method="post" action="edit.php">
 
       <p>First Name:
@@ -154,36 +149,82 @@ $profile_id = $row['profile_id'];
         <input type="text" name="last_name" size="60" value="<?= $e ?>"/>
       </p>
 
-      <p>Email:
-        <input type="text" name="email" size="30"value="<?= $p ?>"/>
+      <p>Email: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="text" name="email" size="60"value="<?= $p ?>"/>
       </p>
-      <p>Headline:<br/>
-        <input type="text" name="headline" size="80" value="<?= $q ?>"/>
+      <p>Headline: &nbsp&nbsp
+        <input type="text" name="headline" size="60" value="<?= $q ?>"/>
       </p>
       <p>Summary:<br/>
-        <textarea name="summary" rows="8" cols="80" ><?= $v ?></textarea>
+        <textarea name="summary" rows="8" cols="67" ><?= $v ?></textarea>
       </p>
 
-      <div class="user-box">
-        <p> Position:
-          <button id = "addPos" type="button" >
-             +
-          </button>
-        </p>
-      </div>
+      <?php
+        //We print the current Education data of the profile selected to be edited
+        $countEdu = 0;
+        echo('<p> Education:&nbsp <input type ="submit" id = "addEdu" value="+">'."\n");
+        echo('<div id="edu_fields">'."\n");
+        if ( count($schools)>0)
+        {
+          foreach($schools as $school)
+          {
+            $countEdu++;
+            echo('<div id="edu'.$countEdu.'">');
+            echo('<p>Universities Year: <input type="text" name="edu_year'.$countEdu.'" value ="'.$school['year'].'"/>
+            <input type ="button" value ="-" onclick="$(\'#edu'.$countEdu.'\').remove(); return false;"></p>
+            <p>School Name:&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" size="55" name="edu_school'.$countEdu.'" class="school"
+            value = "'.htmlentities($school['name']).'"/>');
+            echo("\n</div>\n");
+          }
+        }
+        echo("</div></p>\n");
+        ?>
+        <!-- Here, this fields gonna be the place where Education inputs gonna be add -->
+        <div id="education_fields">
 
+        </div>
+        <?php
+        //We print the current Position data of the profile selected to be edited
+        $countPos = 0;
+        echo('<p> Position: &nbsp&nbsp&nbsp <input type ="submit" id = "addPos" value="+">'."\n");
+        echo('<div id="position_fields">'."\n");
+        if ( count($positions)>0)
+        {
+          foreach($positions as $position)
+          {
+            $countPos++;
+            echo('<div class = "position" id="position'.$countPos.'">');
+            echo('<p>Positions Year: <input type="text" name="year'.$countPos.'" value ="'.htmlentities($position['year']).'"/>
+            <input type ="button" value ="-" onclick="$(\'#position'.$countPos.'\').remove(); return false;"><br>');
+            echo('<textarea name="desc'.$countPos.'"rows="8" cols="80">'."\n");
+            echo(htmlentities($position['description'])."\n");
+            echo("\n</textarea>\n</div>\n");
+          }
+        }
+        echo("</div></p>\n");
+       ?>
+
+       <!-- Here, this fields gonna be the place where Position inputs gonna be add -->
       <div id="position_fields">
-          <!--Year: <input type="text" name="year'+countPos+'" value="<\? $yearPosition ?>"/>
-          <textarea name="description"style="background:#19273c;color:white;" rows="2" cols="45"><\?= $textPosition ?></textarea>-->
+
       </div>
 
-      <p>
-        <input type="hidden" name="profile_id" value="<?= $y ?>"/>
-        <input type="submit" value="Save">
-        <input type="submit" name="cancel" value="Cancel">
+      <!-- Our submit_box, those span tag are kind of desorienting i know, but they are just here to do some animation in css later (check index.css file) -->
+      <p class="submit_box">
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <input class="myButton" type="hidden" name="profile_id" value="<?= $y ?>"/>
+          <input class="myButton" type="submit" value="Save">
+          <input class="myButton" type="submit" name="cancel" value="Cancel">
+        </a>
       </p>
   </form>
+
   <script type="text/javascript">
+  // Adding Clicking event, when the user click on "+", so we add a new field for education or position inputs
     countPos = 0;
     $(document).ready(function (){
       window.console && console.log("The dom is ready: Script begin");
@@ -193,19 +234,44 @@ $profile_id = $row['profile_id'];
           alert("Maximum of nine position entries exceeded");
           return;
         }
+
         countPos++;
+        // Kind of dirty code here, just to create new position related fields
         window.console && console.log('Adding position'+countPos);
         $('#position_fields').append(
           '<div id="position'+countPos+'"> \
           <input type="button" value="-" \
-            onclick= "window.console && console.log(\'Removing position'+countPos+'\');countPos--;$(\'#position'+countPos+'\').remove();return false;"> Year: <input type="text" name="year'+countPos+'" value=""/>  \
-            <textarea name="description'+countPos+'"style="background:#19273c;color:white;" rows="2" cols="45"></textarea>\
-            </div><br>');
+            onclick= "window.console && console.log(\'Removing position'+countPos+'\');countPos--;$(\'#position'+countPos+'\').remove();return false;">Positions Year: <input type="text" placeholder="<? $rand=rand(1900,2020);echo($rand);?>" name="year'+countPos+'" value=""/>  \
+            <textarea placeholder="Positions description :" name="description'+countPos+'"style="background:#19273c;color:white;" rows="2" cols="45"></textarea>\
+            </div><br>');});
+
+
+
+        countEduc = 0;
+        $("#addEdu").click(function(event){
+            event.preventDefault();
+              if (countEduc>=9)
+              {
+                alert("Maximum of nine education entries exceeded");
+                return;
+              }
+              countEduc++;
+              // Kind of dirty code here, just to create new education related fields
+              window.console && console.log('Adding education'+countEduc);
+                $('#education_fields').append(
+                  '<div id="education'+countEduc+'"> \
+                  <input type="button" value="-" \
+                    onclick= "window.console && console.log(\'Removing education'+countEduc+'\');countEduc--;$(\'#education'+countEduc+'\').remove();return false;"> Studies year: <input type="text" placeholder="<? $rand=rand(1900,2020);echo($rand);?>" name="edu_year'+countEduc+'" value=""/>  \
+                    <textarea class="school" placeholder="Universities Name" name="edu_school'+countEduc+'"style="background:#19273c;color:white;" rows="2" cols="45"></textarea>\
+                    </div><br>');
+
 
       }
-    );}
-
     );
+  });
+
+
+
   </script>
 </div>
 </body>

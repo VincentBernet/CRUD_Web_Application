@@ -1,5 +1,5 @@
-/* Bernet Vincent week 2's assignment of "JavaScript, jQuery, and JSON" course from Coursera
-   Added some jQuerry to show and insert or not new Position (with a new table eponyme) */
+/*-- Personal Css file common for every page */
+/* Check at the bottom (especially at the span selector) to see the fun part of this stylesheet, with some cool animation */
 
 #user {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -137,7 +137,8 @@ a {
   font-size: 12px;
 }
 
-.login-box form a {
+.login-box form a,
+.submit_box {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -151,7 +152,8 @@ a {
   letter-spacing: 4px;
 }
 
-.login-box a:hover {
+.login-box a:hover,
+.submit_box a:hover {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
@@ -159,12 +161,14 @@ a {
     0 0 100px #03e9f4;
 }
 
-.login-box a span {
+.login-box a span,
+.submit_box a span {
   position: absolute;
   display: block;
 }
 
-.login-box a span:nth-child(1) {
+.login-box a span:nth-child(1),
+.submit_box a span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -184,7 +188,8 @@ a {
   }
 }
 
-.login-box a span:nth-child(2) {
+.login-box a span:nth-child(2),
+.submit_box a span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -206,7 +211,8 @@ a {
   }
 }
 
-.login-box a span:nth-child(3) {
+.login-box a span:nth-child(3),
+.submit_box a span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -227,7 +233,8 @@ a {
   }
 }
 
-.login-box a span:nth-child(4) {
+.login-box a span:nth-child(4),
+.submit_box a span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;
@@ -247,6 +254,7 @@ a {
   }
 }
 .myButton,
+#addEdu,
 #addPos {
   box-shadow: 0px 0px 19px -23px #fff6af;
   background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
@@ -265,11 +273,13 @@ a {
   text-shadow: 0px 1px 0px #ffee66;
 }
 .myButton:hover,
+#addEdu:hover,
 #addPos:hover {
   background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
   background-color: #ffab23;
 }
 .myButton:active,
+#addEdu:active,
 #addPos:active {
   position: relative;
   top: 1px;
