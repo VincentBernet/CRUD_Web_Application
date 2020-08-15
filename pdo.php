@@ -1,5 +1,4 @@
-<!-- Bernet Vincent Crud Application -->
-<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
+<!-- Bernet Vincent Crud Application, check the READ-ME -->
 
 <!-- !!!! follow the read-me instruction to change those value to connect it to your own database (port=3306 in most case for windows user, and 8880 for mac users) -->
 <!-- Specific file to link our code and querry to our database, gonna reuse it a lot in other page, by requiring it. -->

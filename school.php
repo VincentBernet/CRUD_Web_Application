@@ -1,5 +1,4 @@
 <!-- Bernet Vincent Crud Application -->
-<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
 
 <!-- TODO Just made this file to transform some of our data to JSON type, but i didn't figure how to make it work with some jQuerry (check edit and add php files, and autocomplete function) -->
 <?php

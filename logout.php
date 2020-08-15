@@ -1,5 +1,5 @@
-<!-- Bernet Vincent Crud Application -->
-<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
+<!-- Bernet Vincent Crud Application, check the READ-ME -->
+
 
 <!-- Simple page where we log-out of our session by destroying it, after that we redirect to index.php -->
 <?php

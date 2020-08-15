@@ -1,5 +1,5 @@
-<!-- Bernet Vincent Crud Application -->
-<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
+<!-- Bernet Vincent Crud Application, check the READ-ME -->
+<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) and new Education (with 2 new tables, Institution and Education) -->
 
 <!-- To begin with we call our pdo to link our php to our database, and we also call our utility php files, which is usefull for many functions. we end up by calling our session. -->
 <?php
@@ -125,7 +125,7 @@ if ( $row === false ) {
     return;
 }
 
-// Define some abreviation variable for your form with inside a copy of profile's data selectionned to be changed.
+// Define some abreviation variable for the form bellow with inside a copy of profile's data selectionned to be changed.
 $n = htmlentities($row['first_name']);
 $e = htmlentities($row['last_name']);
 $p = htmlentities($row['email']);
@@ -137,6 +137,7 @@ $profile_id = $row['profile_id'];
 
 ?>
 <br>
+<!-- View part : Our Edit form -->
 <div class="container">
   <h1 class="Titre2">Editing Profile for UMSI</h1>
   <form method="post" action="edit.php">
@@ -152,15 +153,17 @@ $profile_id = $row['profile_id'];
       <p>Email: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <input type="text" name="email" size="60"value="<?= $p ?>"/>
       </p>
+
       <p>Headline: &nbsp&nbsp
         <input type="text" name="headline" size="60" value="<?= $q ?>"/>
       </p>
+
       <p>Summary:<br/>
         <textarea name="summary" rows="8" cols="67" ><?= $v ?></textarea>
       </p>
 
       <?php
-        //We print the current Education data of the profile selected to be edited
+        //We print the current (/old) Education data of the profile selected to be edited
         $countEdu = 0;
         echo('<p> Education:&nbsp <input type ="submit" id = "addEdu" value="+">'."\n");
         echo('<div id="edu_fields">'."\n");
@@ -184,7 +187,7 @@ $profile_id = $row['profile_id'];
 
         </div>
         <?php
-        //We print the current Position data of the profile selected to be edited
+        //We print the current (/old) Position data of the profile selected to be edited
         $countPos = 0;
         echo('<p> Position: &nbsp&nbsp&nbsp <input type ="submit" id = "addPos" value="+">'."\n");
         echo('<div id="position_fields">'."\n");

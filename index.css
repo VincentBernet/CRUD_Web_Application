@@ -1,4 +1,5 @@
-/*-- Personal Css file common for every page */
+/* Bernet Vincent Crud Application, check the READ-ME
+/* <!-- Personal Css file common for every page -->
 /* Check at the bottom (especially at the span selector) to see the fun part of this stylesheet, with some cool animation */
 
 #user {
@@ -83,7 +84,8 @@ a {
   text-transform: none;
 }
 
-.login-box {
+.login-box,
+.add-box {
   position: absolute;
   top: 55%;
   left: 50%;
@@ -95,18 +97,21 @@ a {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
-.login-box h2 {
+.login-box h2,
+.add-box h2 {
   margin: 0 0 30px;
   padding: 0;
   color: #fff;
   text-align: center;
 }
 
-.login-box .user-box {
+.login-box .user-box,
+.add-box .user-box {
   position: relative;
 }
 
-.login-box .user-box input {
+.login-box .user-box input,
+.add-box .user-box input {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -118,7 +123,8 @@ a {
   background: transparent;
 }
 
-.login-box .user-box label {
+.login-box .user-box label,
+.add-box .user-box label {
   position: absolute;
   top: 0;
   left: 0;
@@ -130,7 +136,9 @@ a {
 }
 
 .login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.login-box .user-box input:valid ~ label,
+.add-box .user-box input:focus ~ label,
+.add-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
   color: #03e9f4;
@@ -138,7 +146,8 @@ a {
 }
 
 .login-box form a,
-.submit_box {
+.submit_box form a,
+.add-box form a {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -153,7 +162,8 @@ a {
 }
 
 .login-box a:hover,
-.submit_box a:hover {
+.submit_box a:hover,
+.add-box a:hover {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
@@ -162,13 +172,15 @@ a {
 }
 
 .login-box a span,
-.submit_box a span {
+.submit_box a span,
+.add-box a span {
   position: absolute;
   display: block;
 }
 
 .login-box a span:nth-child(1),
-.submit_box a span:nth-child(1) {
+.submit_box a span:nth-child(1),
+.add-box a span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -189,6 +201,7 @@ a {
 }
 
 .login-box a span:nth-child(2),
+.add-box a span:nth-child(2),
 .submit_box a span:nth-child(2) {
   top: -100%;
   right: 0;
@@ -212,6 +225,7 @@ a {
 }
 
 .login-box a span:nth-child(3),
+.add-box a span:nth-child(3),
 .submit_box a span:nth-child(3) {
   bottom: 0;
   right: -100%;
@@ -234,6 +248,7 @@ a {
 }
 
 .login-box a span:nth-child(4),
+.add-box a span:nth-child(4),
 .submit_box a span:nth-child(4) {
   bottom: -100%;
   left: 0;

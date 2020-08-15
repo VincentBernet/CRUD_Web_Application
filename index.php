@@ -1,5 +1,6 @@
-<!-- Bernet Vincent Crud Application -->
-<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
+<!-- Bernet Vincent Crud Application, check the READ-ME -->
+<!-- Index page : 2 different views, depends if the user is connected or not. -->
+
 
 <!-- To begin with we call our pdo to link our php to our database, and we also call our utility php files, which is usefull for many functions. we end up by calling our session. -->
 <?php

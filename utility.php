@@ -1,5 +1,5 @@
-<!-- Bernet Vincent Crud Application -->
-<!-- Added some jQuerry to show and insert or not new Position (with a new table eponymic) -->
+<!-- Bernet Vincent Crud Application, check the READ-ME -->
+
 <!-- There is a lot of stuff here, those function will be used many and many times in other file -->
 <?php
 function validateProfile()
