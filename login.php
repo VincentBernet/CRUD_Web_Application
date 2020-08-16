@@ -81,7 +81,8 @@
           }
       }
   }
-
+  // View part from the begining.
+  include('header.php');
   // Flash Message if log-in, or not, or specification on what is wrong with users input
       flashMessages();
   ?>

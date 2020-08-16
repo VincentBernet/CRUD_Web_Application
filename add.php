@@ -7,6 +7,7 @@
   require_once "pdo.php";
   require_once "utility.php";
   session_start();
+  require_once 'header.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,12 +18,12 @@
 <link rel="stylesheet" href="index.css">
 <!-- Don't forget to call jQuerry librairy -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Bunch of optinal commodity to make it looks better -->
+<!-- Bunch of optinal commodity to make it looks better
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>-->
 
 <meta charset="UTF-8" />
 <body>
@@ -31,7 +32,7 @@
     // First check if the user is logged in
     if (!isset($_SESSION['email']))
     {
-      die("<div style='text-align:center;color:pink;weight:bold;font-size:35px;margin-top:10%;'>ACCESS DENIED<br> <a href='index.php'>Back to Index</a></div>");
+      die("<div style='text-align:center;color:pink;weight:bold;font-size:35px;margin-top:10%;'>ACCESS DENIED<br> YOU NEED TO BE LOGED IN TO INTERACT WITH PROFILE<br> <a href='index.php'>Back to Index</a></div>");
     }
 
     // Second if the user requested cancel go back to index.php
@@ -40,6 +41,9 @@
       header("Location: index.php");
       return;
     }
+
+
+
 
     // Third : Flash Message -> print the result of our login / add / Logout / register action
     flashMessages();
@@ -105,14 +109,13 @@
 
   ?>
 
-  <!-- View part -->
-  <?php
-    echo('<div class="Titre" style="text-align:left;"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        Adding Profiles for '.$_SESSION["name"].'</div>');
-        ?>
-<!-- Our Add form -->
-<div class="add-box">
 
+<!-- View part : Our Add form -->
+<div class="add-box">
+  <?php
+    echo('<div class="Titre" style="text-align:center;">
+        Adding Profiles for '.$_SESSION["name"].'</div>');
+  ?>
   <form method="post">
 
     <div class="user-box">
@@ -146,7 +149,7 @@
     </div>
 
     <div class="user-box">
-      <p> School: &nbsp&nbsp&nbsp&nbsp&nbsp
+      <p> School: &nbsp&nbsp&nbsp&nbsp
         <button id = "addEdu" type="button">
             +
         </button>

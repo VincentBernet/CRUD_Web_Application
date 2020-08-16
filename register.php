@@ -3,6 +3,7 @@
 <!-- To begin with we call our pdo to link our php to our database, and we also call our utility php files, which is usefull for many functions. we end up by calling our session. -->
 <?php
   require_once "pdo.php";
+  require_once "utility.php";
   session_start();
 ?>
 
@@ -51,20 +52,19 @@
   ?>
 
   <!-- View part -->
+
   <?php
-
-  if (isset($_SESSION["message"]))
-  {
-    echo $_SESSION["message"];
-  }
-  unset($_SESSION["message"]);
-
+  // View part from the begining.
+  include('header.php');
+  flashMessages();
   ?>
 
-<span class="Titre"> Register Form </span>
-<div class="login-box">
-  <form method="post">
 
+<div class="login-box">
+  <span class="Titre" style="text-align:center;"> Register Form </span>
+
+  <form method="post">
+<br>
       <div class="user-box">
         <p>name:
           <input type="text" name="name" size="30"/>

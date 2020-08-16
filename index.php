@@ -14,7 +14,7 @@ session_start();
 <html>
 <head>
   <title> Vincent Bernet Index</title>
-  <!-- Personal Css file common for every page -->
+  <!-- Personal Css file common for every page-->
   <link rel="stylesheet" href="index.css">
   <meta charset="UTF-8" />
 </head>
@@ -22,6 +22,9 @@ session_start();
 
   <?php
   // Begining of the View Part :
+
+  // We call our header page
+  include('header.php');
   // Flash Message : print the result of our login / add / Logout / register action
   flashMessages();
   // If we are not login yet : display first version of our index file
@@ -31,13 +34,14 @@ session_start();
   <br>
             <div class="Titre2">Bernet Vincent\'s Resume Registry</div><br><br>
             <p><a href="login.php">Please log in</a> or if you don\'t have an account yet, you can <a a href="register.php"> Register here</a></p>
-            <p>Attempt to <a href="add.php">add data</a> without logging in</p>
+            <p>Attempt to <a href="add.php class="forbiden"">add data</a> without logging in</p>
           ');}
 
   // When we are login-in : display seconde version of our index file
   else
   {
-  echo("<div class='Titre'>Vincent Bernet's Resume Registry<br>Welcome to :".$_SESSION['name']."</div>");
+  echo("<div class='Titre'><br>Welcome to :".$_SESSION['name']);
+  echo("<br>Your Team's dashboard </div>");
   echo('<table border="1" id="myTable">'."\n");
   echo('<br><br><br>');
   // Display few data information of our user, with the option to edit, delete or view them in more detail

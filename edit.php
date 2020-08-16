@@ -6,6 +6,7 @@
 require_once "pdo.php";
 require_once "utility.php";
 session_start();
+require_once "header.php";
 ?>
 
 <!DOCTYPE html>
@@ -138,28 +139,28 @@ $profile_id = $row['profile_id'];
 ?>
 <br>
 <!-- View part : Our Edit form -->
-<div class="container">
+<div class="add-box">
   <h1 class="Titre2">Editing Profile for UMSI</h1>
   <form method="post" action="edit.php">
 
       <p>First Name:
-        <input type="text" name="first_name" size="60" value="<?= $n ?>"/>
+        <input type="text" class="fields_edit" name="first_name" size="43" value="<?= $n ?>"/>
       </p>
 
       <p>Last Name:
-        <input type="text" name="last_name" size="60" value="<?= $e ?>"/>
+        <input type="text" class="fields_edit" name="last_name" size="43" value="<?= $e ?>"/>
       </p>
 
       <p>Email: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <input type="text" name="email" size="60"value="<?= $p ?>"/>
+        <input type="text"  class="fields_edit" name="email" size="43"value="<?= $p ?>"/>
       </p>
 
       <p>Headline: &nbsp&nbsp
-        <input type="text" name="headline" size="60" value="<?= $q ?>"/>
+        <input type="text" class="fields_edit" name="headline" size="43" value="<?= $q ?>"/>
       </p>
 
       <p>Summary:<br/>
-        <textarea name="summary" rows="8" cols="67" ><?= $v ?></textarea>
+        <textarea name="summary" class="fields_edit" rows="8" cols="40" ><?= $v ?></textarea>
       </p>
 
       <?php
@@ -173,9 +174,9 @@ $profile_id = $row['profile_id'];
           {
             $countEdu++;
             echo('<div id="edu'.$countEdu.'">');
-            echo('<p>Universities Year: <input type="text" name="edu_year'.$countEdu.'" value ="'.$school['year'].'"/>
+            echo('<p>Universities Year: <input type="text" class="fields_edit" name="edu_year'.$countEdu.'" value ="'.$school['year'].'"/>
             <input type ="button" value ="-" onclick="$(\'#edu'.$countEdu.'\').remove(); return false;"></p>
-            <p>School Name:&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" size="55" name="edu_school'.$countEdu.'" class="school"
+            <p>School Name:&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="fields_edit" size="43" name="edu_school'.$countEdu.'" class="school"
             value = "'.htmlentities($school['name']).'"/>');
             echo("\n</div>\n");
           }
@@ -197,9 +198,9 @@ $profile_id = $row['profile_id'];
           {
             $countPos++;
             echo('<div class = "position" id="position'.$countPos.'">');
-            echo('<p>Positions Year: <input type="text" name="year'.$countPos.'" value ="'.htmlentities($position['year']).'"/>
+            echo('<p>Positions Year: <input type="text" class="fields_edit" name="year'.$countPos.'" value ="'.htmlentities($position['year']).'"/>
             <input type ="button" value ="-" onclick="$(\'#position'.$countPos.'\').remove(); return false;"><br>');
-            echo('<textarea name="desc'.$countPos.'"rows="8" cols="80">'."\n");
+            echo('<textarea class="fields_edit" name="desc'.$countPos.'"rows="8" cols="40">'."\n");
             echo(htmlentities($position['description'])."\n");
             echo("\n</textarea>\n</div>\n");
           }
@@ -225,6 +226,7 @@ $profile_id = $row['profile_id'];
         </a>
       </p>
   </form>
+</div>
 
   <script type="text/javascript">
   // Adding Clicking event, when the user click on "+", so we add a new field for education or position inputs
@@ -244,8 +246,8 @@ $profile_id = $row['profile_id'];
         $('#position_fields').append(
           '<div id="position'+countPos+'"> \
           <input type="button" value="-" \
-            onclick= "window.console && console.log(\'Removing position'+countPos+'\');countPos--;$(\'#position'+countPos+'\').remove();return false;">Positions Year: <input type="text" placeholder="<? $rand=rand(1900,2020);echo($rand);?>" name="year'+countPos+'" value=""/>  \
-            <textarea placeholder="Positions description :" name="description'+countPos+'"style="background:#19273c;color:white;" rows="2" cols="45"></textarea>\
+            onclick= "window.console && console.log(\'Removing position'+countPos+'\');countPos--;$(\'#position'+countPos+'\').remove();return false;">Positions Year: <input type="text" class="fields_edit" placeholder="<? $rand=rand(1900,2020);echo($rand);?>" name="year'+countPos+'" value=""/>  \
+            <textarea class="fields_edit" placeholder="Positions description :" name="description'+countPos+'" rows="2" cols="45"></textarea>\
             </div><br>');});
 
 
@@ -264,8 +266,8 @@ $profile_id = $row['profile_id'];
                 $('#education_fields').append(
                   '<div id="education'+countEduc+'"> \
                   <input type="button" value="-" \
-                    onclick= "window.console && console.log(\'Removing education'+countEduc+'\');countEduc--;$(\'#education'+countEduc+'\').remove();return false;"> Studies year: <input type="text" placeholder="<? $rand=rand(1900,2020);echo($rand);?>" name="edu_year'+countEduc+'" value=""/>  \
-                    <textarea class="school" placeholder="Universities Name" name="edu_school'+countEduc+'"style="background:#19273c;color:white;" rows="2" cols="45"></textarea>\
+                    onclick= "window.console && console.log(\'Removing education'+countEduc+'\');countEduc--;$(\'#education'+countEduc+'\').remove();return false;"> Studies year: <input type="text" class="fields_edit" placeholder="<? $rand=rand(1900,2020);echo($rand);?>" name="edu_year'+countEduc+'" value=""/>  \
+                    <textarea class="school fields_edit" placeholder="Universities Name" name="edu_school'+countEduc+'" rows="2" cols="45"></textarea>\
                     </div><br>');
 
 

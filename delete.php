@@ -55,7 +55,13 @@ if ( isset($_POST['delete']) && isset($_POST['profile_id']) )
 ?>
 
 <!-- View Part : -->
-  <form method="post" style="position:absolute;top:10%;">
+
+<?php
+  // We call our header page
+  include('header.php');
+?>
+<br><br>
+  <form method="post">
     <span class="Titre"> Delete the profile <?= $row['profile_id'] ?> from the data base </span>
     <!-- htmlentities here to ensure that non htmlinjection are possible -->
     <p >Confirm: Deleting <?= htmlentities($row['first_name'])." ".htmlentities($row['last_name']) ?></p>

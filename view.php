@@ -16,10 +16,16 @@ session_start();
 </head>
 
 <body>
+
   <br>
-  <h1 class="Titre2">Profile information</h1>
   <?php
     // View part from the begining.
+    // We call our header page
+    include('header.php');
+  ?>
+  <h1 class="Titre2">Profile information</h1>
+  <?php
+
     // Flash Message : print the result of our login / add / Logout / register / view action
     flashMessages();
     // Display profile information from the eponymic table.

@@ -1,0 +1,78 @@
+header {
+  background-color: #6b818c;
+  border: 5px solid #d8e4ff;
+}
+
+.dark-theme {
+  background: linear-gradient(#141e30, #243b55);
+}
+.header-logo-img {
+  cursor: help;
+  border-radius: 50%;
+  background-color: #66ff99;
+  border: 5px solid #31e981;
+  padding: 1px;
+  max-width: 20%;
+  height: auto;
+  transition: box-shadow 0.7s, transform 2s;
+}
+
+header .header-container .TitreSite {
+  position: absolute;
+  left: 27%;
+  right: auto;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 4.2vmin;
+  letter-spacing: 0.6px;
+  word-spacing: 1.8px;
+  color: #00120b;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: none;
+}
+
+.header-logo-img:hover {
+  box-shadow: 0 0 2px 15px rgba(0, 140, 186, 0.5);
+  transform: rotate(720deg);
+}
+
+.header-container {
+  width: 1920px;
+  max-width: 100%;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+header .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.header-nav-list {
+  margin: 1em 0 0.5em;
+  text-align: center;
+}
+.header-nav-list li {
+  color: #00120b;
+  display: inline;
+}
+
+.header-nav a {
+  display: inline-block;
+  color: #d8e4ff;
+  padding: 0.5em 1.5em;
+}
+
+.forbidden {
+  cursor: no-drop;
+}
+
+#New-color-theme {
+  width: 5%;
+  height: 2vmin;
+  background-color: red;
+}
