@@ -18,13 +18,15 @@ session_start();
   <link rel="stylesheet" href="index.css">
   <meta charset="UTF-8" />
 </head>
+<?php
+// We call our header page
+include('header.php');?>
 <body>
 
   <?php
   // Begining of the View Part :
 
-  // We call our header page
-  include('header.php');
+
   // Flash Message : print the result of our login / add / Logout / register action
   flashMessages();
   // If we are not login yet : display first version of our index file
@@ -32,9 +34,11 @@ session_start();
   {
   echo('    <div class="container">
   <br>
-            <div class="Titre2">Bernet Vincent\'s Resume Registry</div><br><br>
-            <p><a href="login.php">Please log in</a> or if you don\'t have an account yet, you can <a a href="register.php"> Register here</a></p>
-            <p>Attempt to <a href="add.php class="forbiden"">add data</a> without logging in</p>
+            <div class="Titre2">Welcome to the new way of managing your teams collaborator.</div><br><br>
+             <br>
+            <div class="Regular_Text">Before managing your teams members you need to login or register if you don\'t have an account yet.
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
           ');}
 
   // When we are login-in : display seconde version of our index file

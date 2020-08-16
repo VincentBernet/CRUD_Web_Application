@@ -1,10 +1,11 @@
 header {
-  background-color: #6b818c;
-  border: 5px solid #d8e4ff;
-}
+  background: #a8dadc;
 
+  border: 5px solid #457b9d;
+}
 .dark-theme {
   background: linear-gradient(#141e30, #243b55);
+  color: white;
 }
 .header-logo-img {
   cursor: help;
@@ -19,7 +20,7 @@ header {
 
 header .header-container .TitreSite {
   position: absolute;
-  left: 27%;
+  left: 18%;
   right: auto;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 4.2vmin;
@@ -63,8 +64,21 @@ header .header-container {
 
 .header-nav a {
   display: inline-block;
-  color: #d8e4ff;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 2.2vmin;
+  letter-spacing: 0.6px;
+  word-spacing: 1.8px;
+  color: #1d3557;
+  font-weight: 700;
+  text-decoration: underline;
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: none;
   padding: 0.5em 1.5em;
+}
+
+.header-nav a:hover {
+  color: #e63946;
 }
 
 .forbidden {
@@ -72,7 +86,14 @@ header .header-container {
 }
 
 #New-color-theme {
-  width: 5%;
-  height: 2vmin;
-  background-color: red;
+  background: #000000;
+  background: linear-gradient(#000000, #073763);
+  border: 4px solid #e06666;
+  border-radius: 1000px;
+  width: 10%;
+  height: 5vmin;
+  color: #ffffff;
+  display: inline-block;
+  font: normal bold 2vmin "Ubuntu", sans-serif;
+  text-align: center;
 }

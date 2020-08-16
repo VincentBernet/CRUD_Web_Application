@@ -13,7 +13,7 @@
           alt="Oups my logo should have been here"
         />
       </h1>
-      <button id ="New-color-theme" > </button>
+
       <h2 class="TitreSite">
         Management Plateform
       </h2>
@@ -40,18 +40,16 @@
             ?>
         </ul>
       </nav>
+      <button id ="New-color-theme" >Night Mode</button>
     </div>
 
   <script type="text/javascript">
     document.getElementById('New-color-theme').addEventListener('click', function () {
       let darkThemeEnabled = document.body.classList.toggle('dark-theme');
-      document.body.classList.toggle('dark-theme');
-      //document.getElementById("header").classList.toggle('dark-theme');
+      //document.getElementsByClassName("Regular_Text").style.background = "white";
       localStorage.setItem('dark-theme-enabled', darkThemeEnabled);
+      //localStorage.setItem('dark-theme-enabled2', darkThemeEnabled2);
 });
   </script>
   </header>
-  <body>
-    hahahah
-  </body>
 </html>
