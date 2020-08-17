@@ -1,9 +1,8 @@
 /* Bernet Vincent Crud Application, check the READ-ME
 /* <!-- Personal Css file common for every page -->
 /* Check at the bottom (especially at the span selector) to see the fun part of this stylesheet, with some cool animation */
-
 #user {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -38,14 +37,13 @@ body {
   color: black;
   margin-left: 5%;
   margin-right: 5%;
-
   background-color: #f1faee;
+  -webkit-transition: all 3s ease-out;
   transition: all 3s ease-out;
 }
 
 .Regular_Text {
-  font-family: "ff-tisa-web-pro", Palatino, " Palatino Linotype",
-    "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-family: 'ff-tisa-web-pro', Palatino, ' Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
   font-size: 18px;
   font-size: 1.125rem;
   line-height: 30px;
@@ -53,6 +51,8 @@ body {
   text-align: center;
   margin-left: 22%;
   margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   max-width: 91vmin;
   text-align: left;
@@ -68,7 +68,8 @@ body {
   word-spacing: 0px;
   color: #e63946;
   font-weight: 400;
-  text-decoration: none solid rgb(68, 68, 68);
+  -webkit-text-decoration: none solid #444444;
+          text-decoration: none solid #444444;
   font-style: italic;
   font-variant: normal;
   text-transform: none;
@@ -81,7 +82,8 @@ body {
   word-spacing: 0px;
   color: #e63946;
   font-weight: 400;
-  text-decoration: none solid rgb(68, 68, 68);
+  -webkit-text-decoration: none solid #444444;
+          text-decoration: none solid #444444;
   font-style: none;
   font-variant: normal;
   text-transform: none;
@@ -94,7 +96,8 @@ a {
   word-spacing: 0px;
   color: #ffb8ff;
   font-weight: 400;
-  text-decoration: underline solid rgb(68, 68, 68);
+  -webkit-text-decoration: underline solid #444444;
+          text-decoration: underline solid #444444;
   font-style: italic;
   font-variant: normal;
   text-transform: none;
@@ -107,12 +110,16 @@ a {
   left: 50%;
   width: 400px;
   padding: 40px;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.5);
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
+
 .login-box h2,
 .add-box h2 {
   margin: 0 0 30px;
@@ -148,6 +155,7 @@ a {
   font-size: 16px;
   color: #fff;
   pointer-events: none;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
@@ -172,6 +180,7 @@ a {
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
   margin-top: 40px;
   letter-spacing: 4px;
@@ -183,8 +192,8 @@ a {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
-    0 0 100px #03e9f4;
+  -webkit-box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+          box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
 }
 
 .login-box a span,
@@ -201,15 +210,26 @@ a {
   left: -100%;
   width: 100%;
   height: 2px;
+  background: -webkit-gradient(linear, left top, right top, from(transparent), to(#03e9f4));
   background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: btn-anim1 1s linear infinite;
+  -webkit-animation: btn-anim1 1s linear infinite;
+          animation: btn-anim1 1s linear infinite;
+}
+
+@-webkit-keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
 }
 
 @keyframes btn-anim1 {
   0% {
     left: -100%;
   }
-
   50%,
   100% {
     left: 100%;
@@ -223,17 +243,28 @@ a {
   right: 0;
   width: 2px;
   height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#03e9f4));
   background: linear-gradient(180deg, transparent, #03e9f4);
+  -webkit-animation: btn-anim2 1s linear infinite;
+          animation: btn-anim2 1s linear infinite;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
 
-  animation: btn-anim2 1s linear infinite;
-  animation-delay: 0.25s;
+@-webkit-keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,
+  100% {
+    top: 100%;
+  }
 }
 
 @keyframes btn-anim2 {
   0% {
     top: -100%;
   }
-
   50%,
   100% {
     top: 100%;
@@ -247,16 +278,28 @@ a {
   right: -100%;
   width: 100%;
   height: 2px;
+  background: -webkit-gradient(linear, right top, left top, from(transparent), to(#03e9f4));
   background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: btn-anim3 1s linear infinite;
-  animation-delay: 0.5s;
+  -webkit-animation: btn-anim3 1s linear infinite;
+          animation: btn-anim3 1s linear infinite;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+@-webkit-keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,
+  100% {
+    right: 100%;
+  }
 }
 
 @keyframes btn-anim3 {
   0% {
     right: -100%;
   }
-
   50%,
   100% {
     right: 100%;
@@ -270,9 +313,22 @@ a {
   left: 0;
   width: 2px;
   height: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(#03e9f4));
   background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: btn-anim4 1s linear infinite;
-  animation-delay: 0.75s;
+  -webkit-animation: btn-anim4 1s linear infinite;
+          animation: btn-anim4 1s linear infinite;
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+
+@-webkit-keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,
+  100% {
+    bottom: 100%;
+  }
 }
 
 @keyframes btn-anim4 {
@@ -293,7 +349,9 @@ a {
 .myButton,
 #addEdu,
 #addPos {
-  box-shadow: 0px 0px 19px -23px #fff6af;
+  -webkit-box-shadow: 0px 0px 19px -23px #fff6af;
+          box-shadow: 0px 0px 19px -23px #fff6af;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #ffec64), to(#ffab23));
   background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
   background-color: #ffec64;
   border-radius: 14px;
@@ -313,6 +371,7 @@ a {
 .myButton:hover,
 #addEdu:hover,
 #addPos:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #ffab23), to(#ffec64));
   background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
   background-color: #ffab23;
 }
@@ -324,3 +383,4 @@ a {
   top: 1px;
   left: 1px;
 }
+/*# sourceMappingURL=index.css.map */

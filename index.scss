@@ -1,0 +1,325 @@
+/* Bernet Vincent Crud Application, check the READ-ME
+/* <!-- Personal Css file common for every page -->
+/* Check at the bottom (especially at the span selector) to see the fun part of this stylesheet, with some cool animation */
+
+#user {
+	font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#user td,
+#user th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#user tr:nth-child(even) {
+	background-color: transparent;
+}
+
+#user tr:hover {
+	background-color: #ff1d58;
+}
+
+#user th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #4caf50;
+	color: white;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	color: black;
+	margin-left: 5%;
+	margin-right: 5%;
+	background-color: #f1faee;
+	transition: all 3s ease-out;
+}
+
+.Regular_Text {
+	font-family: 'ff-tisa-web-pro', Palatino, ' Palatino Linotype',
+		'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+	font-size: 18px;
+	font-size: 1.125rem;
+	line-height: 30px;
+	line-height: 1.875rem;
+	text-align: center;
+	margin-left: 22%;
+	margin-right: auto;
+	display: flex;
+	max-width: 91vmin;
+	text-align: left;
+	text-justify: inter-word;
+}
+
+.Titre {
+	margin-top: 50px;
+	text-align: center;
+	font-family: Georgia, serif;
+	font-size: 32px;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+	color: #e63946;
+	font-weight: 400;
+	text-decoration: none solid rgb(68, 68, 68);
+	font-style: italic;
+	font-variant: normal;
+	text-transform: none;
+}
+
+.Titre2 {
+	font-family: Georgia, serif;
+	font-size: 32px;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+	color: #e63946;
+	font-weight: 400;
+	text-decoration: none solid rgb(68, 68, 68);
+	font-style: none;
+	font-variant: normal;
+	text-transform: none;
+}
+
+a {
+	font-family: Georgia, serif;
+	font-size: 16px;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+	color: #ffb8ff;
+	font-weight: 400;
+	text-decoration: underline solid rgb(68, 68, 68);
+	font-style: italic;
+	font-variant: normal;
+	text-transform: none;
+}
+
+.login-box,
+.add-box {
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	width: 400px;
+	padding: 40px;
+	transform: translate(-50%, -50%);
+	background: rgba(0, 0, 0, 0.5);
+	box-sizing: border-box;
+	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+	border-radius: 10px;
+}
+.login-box h2,
+.add-box h2 {
+	margin: 0 0 30px;
+	padding: 0;
+	color: #fff;
+	text-align: center;
+}
+
+.login-box .user-box,
+.add-box .user-box {
+	position: relative;
+}
+
+.login-box .user-box input,
+.add-box .user-box input {
+	width: 100%;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	margin-bottom: 30px;
+	border: none;
+	border-bottom: 1px solid #fff;
+	outline: none;
+	background: transparent;
+}
+
+.login-box .user-box label,
+.add-box .user-box label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	pointer-events: none;
+	transition: 0.5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label,
+.add-box .user-box input:focus ~ label,
+.add-box .user-box input:valid ~ label {
+	top: -20px;
+	left: 0;
+	color: #03e9f4;
+	font-size: 12px;
+}
+
+.login-box form a,
+.submit_box form a,
+.add-box form a {
+	position: relative;
+	display: inline-block;
+	padding: 10px 20px;
+	color: #03e9f4;
+	font-size: 16px;
+	text-decoration: none;
+	text-transform: uppercase;
+	overflow: hidden;
+	transition: 0.5s;
+	margin-top: 40px;
+	letter-spacing: 4px;
+}
+
+.login-box a:hover,
+.submit_box a:hover,
+.add-box a:hover {
+	background: #03e9f4;
+	color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+		0 0 100px #03e9f4;
+}
+
+.login-box a span,
+.submit_box a span,
+.add-box a span {
+	position: absolute;
+	display: block;
+}
+
+.login-box a span:nth-child(1),
+.submit_box a span:nth-child(1),
+.add-box a span:nth-child(1) {
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 2px;
+	background: linear-gradient(90deg, transparent, #03e9f4);
+	animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+	0% {
+		left: -100%;
+	}
+
+	50%,
+	100% {
+		left: 100%;
+	}
+}
+
+.login-box a span:nth-child(2),
+.add-box a span:nth-child(2),
+.submit_box a span:nth-child(2) {
+	top: -100%;
+	right: 0;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(180deg, transparent, #03e9f4);
+
+	animation: btn-anim2 1s linear infinite;
+	animation-delay: 0.25s;
+}
+
+@keyframes btn-anim2 {
+	0% {
+		top: -100%;
+	}
+
+	50%,
+	100% {
+		top: 100%;
+	}
+}
+
+.login-box a span:nth-child(3),
+.add-box a span:nth-child(3),
+.submit_box a span:nth-child(3) {
+	bottom: 0;
+	right: -100%;
+	width: 100%;
+	height: 2px;
+	background: linear-gradient(270deg, transparent, #03e9f4);
+	animation: btn-anim3 1s linear infinite;
+	animation-delay: 0.5s;
+}
+
+@keyframes btn-anim3 {
+	0% {
+		right: -100%;
+	}
+
+	50%,
+	100% {
+		right: 100%;
+	}
+}
+
+.login-box a span:nth-child(4),
+.add-box a span:nth-child(4),
+.submit_box a span:nth-child(4) {
+	bottom: -100%;
+	left: 0;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(360deg, transparent, #03e9f4);
+	animation: btn-anim4 1s linear infinite;
+	animation-delay: 0.75s;
+}
+
+@keyframes btn-anim4 {
+	0% {
+		bottom: -100%;
+	}
+	50%,
+	100% {
+		bottom: 100%;
+	}
+}
+
+.fields_edit {
+	background-color: #19273c;
+	color: white;
+}
+
+.myButton,
+#addEdu,
+#addPos {
+	box-shadow: 0px 0px 19px -23px #fff6af;
+	background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	background-color: #ffec64;
+	border-radius: 14px;
+	border: 1px solid #ffaa22;
+	display: inline-block;
+	cursor: pointer;
+	color: #333333;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	font-style: italic;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffee66;
+}
+
+.myButton:hover,
+#addEdu:hover,
+#addPos:hover {
+	background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	background-color: #ffab23;
+}
+
+.myButton:active,
+#addEdu:active,
+#addPos:active {
+	position: relative;
+	top: 1px;
+	left: 1px;
+}

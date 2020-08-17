@@ -1,23 +1,22 @@
+$Night_Mode_Text: white;
+$Night_Mode_Gradient: linear-gradient(#141e30, #243b55);
+
+$Light_Mode_Gradient: #f1faee;
+$Light_Mode_Text: black;
+
 header {
 	background: #a8dadc;
 	border: 5px solid #457b9d;
 }
 
 body {
-	background: #f1faee;
-	color: black;
-}
+	background: $Light_Mode_Gradient;
+	color: $Light_Mode_Text;
 
-body.Night-Mode {
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		from(#141e30),
-		to(#243b55)
-	);
-	background: linear-gradient(#141e30, #243b55);
-	color: white;
+	&.Night-Mode {
+		background: $Night_Mode_Gradient;
+		color: $Night_Mode_Text;
+	}
 }
 
 .header-logo-img {
@@ -28,11 +27,7 @@ body.Night-Mode {
 	padding: 1px;
 	max-width: 20%;
 	height: auto;
-	-webkit-transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
-	transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
 	transition: box-shadow 0.7s, transform 2s;
-	transition: box-shadow 0.7s, transform 2s, -webkit-box-shadow 0.7s,
-		-webkit-transform 2s;
 }
 
 header .header-container .TitreSite {
@@ -52,9 +47,7 @@ header .header-container .TitreSite {
 }
 
 .header-logo-img:hover {
-	-webkit-box-shadow: 0 0 2px 15px rgba(0, 140, 186, 0.5);
 	box-shadow: 0 0 2px 15px rgba(0, 140, 186, 0.5);
-	-webkit-transform: rotate(720deg);
 	transform: rotate(720deg);
 }
 
@@ -66,15 +59,9 @@ header .header-container .TitreSite {
 }
 
 header .header-container {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
 	align-items: center;
-	-ms-flex-pack: distribute;
 	justify-content: space-around;
-	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 }
 
@@ -82,7 +69,6 @@ header .header-container {
 	margin: 1em 0 0.5em;
 	text-align: center;
 }
-
 .header-nav-list li {
 	color: #00120b;
 	display: inline;
@@ -113,13 +99,6 @@ header .header-container {
 
 #Night-button {
 	background: #000000;
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		from(#000000),
-		to(#073763)
-	);
 	background: linear-gradient(#000000, #073763);
 	border: 4px solid #e06666;
 	border-radius: 1000px;
@@ -129,13 +108,12 @@ header .header-container {
 	display: inline-block;
 	font: normal bold 2vmin 'Ubuntu', sans-serif;
 	text-align: center;
-	-webkit-transition: all 3s ease-out;
 	transition: all 3s ease-out;
-}
 
-#Night-button:hover {
-	color: red;
-	background-color: red;
+	&:hover {
+		color: red;
+		background-color: red;
+	}
 }
 
 .white-theme-button {
@@ -149,4 +127,3 @@ header .header-container {
 	font: normal bold 2vmin 'Ubuntu', sans-serif;
 	text-align: center;
 }
-/*# sourceMappingURL=header.css.map */

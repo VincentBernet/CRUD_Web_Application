@@ -2,6 +2,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="header.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   </head>
 
   <header class="header">
@@ -20,19 +22,19 @@
       <nav class="header-nav">
         <ul class="header-nav-list">
 
-          <li>
-            <a href="index.php">Index</a>
-          </li>
+
 
             <?php
               if (!isset($_SESSION['email']))
               {
+                echo('<li><a href="index.php">Home</a></li>');
                 echo('<li><a href="login.php">Login</a></li>');
                 echo('<li><a href="register.php">Register</a></li>');
                 echo('<li><a href="add.php" class="forbidden">Add New profile</a></li>');
               }
               else
               {
+                echo('<li><a href="index.php">TeamsView</a></li>');
                 echo('<li><a href="logout.php">logout</a></li>');
                 echo('<a href="add.php">Add New profile</a>');
 
@@ -40,16 +42,18 @@
             ?>
         </ul>
       </nav>
-      <button id ="New-color-theme" >Night Mode</button>
+      <button id="Night-button" name="Night">Night Mode</button>
     </div>
 
-  <script type="text/javascript">
-    document.getElementById('New-color-theme').addEventListener('click', function () {
-      let darkThemeEnabled = document.body.classList.toggle('dark-theme');
-      //document.getElementsByClassName("Regular_Text").style.background = "white";
-      localStorage.setItem('dark-theme-enabled', darkThemeEnabled);
+
+  <script type='text/javascript'>
+    $(document).ready(function (){
+    document.getElementById('Night-button').addEventListener('click', function () {
+      let NightMode = document.body.classList.toggle('Night-Mode');
+      localStorage.setItem('NightMode', NightMode);
       //localStorage.setItem('dark-theme-enabled2', darkThemeEnabled2);
-});
+});});
   </script>
+
   </header>
 </html>
