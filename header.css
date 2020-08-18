@@ -3,6 +3,18 @@ header {
 	border: 5px solid #457b9d;
 }
 
+.Night-Mode {
+	background: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(#141e30),
+		to(#243b55)
+	);
+	background: linear-gradient(#141e30, #243b55);
+	color: white;
+}
+
 body {
 	background: #f1faee;
 	color: black;

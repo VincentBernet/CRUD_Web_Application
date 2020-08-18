@@ -8,6 +8,10 @@ header {
 	background: #a8dadc;
 	border: 5px solid #457b9d;
 }
+.Night-Mode {
+	background: $Night_Mode_Gradient;
+	color: $Night_Mode_Text;
+}
 
 body {
 	background: $Light_Mode_Gradient;
@@ -19,6 +23,9 @@ body {
 	}
 }
 
+.blue {
+	color: blue;
+}
 .header-logo-img {
 	cursor: help;
 	border-radius: 50%;

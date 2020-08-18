@@ -235,8 +235,8 @@ $profile_id = $row['profile_id'];
       window.console && console.log("The dom is ready: Script begin");
       $("#addPos").click(function(event){
         event.preventDefault();
-        if (countPos>=9){
-          alert("Maximum of nine position entries exceeded");
+        if (countPos>=3){
+          alert("Maximum of three position entries exceeded");
           return;
         }
 
@@ -255,9 +255,9 @@ $profile_id = $row['profile_id'];
         countEduc = 0;
         $("#addEdu").click(function(event){
             event.preventDefault();
-              if (countEduc>=9)
+              if (countEduc>=3)
               {
-                alert("Maximum of nine education entries exceeded");
+                alert("Maximum of three education entries exceeded");
                 return;
               }
               countEduc++;
@@ -279,5 +279,6 @@ $profile_id = $row['profile_id'];
 
   </script>
 </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

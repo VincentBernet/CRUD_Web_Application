@@ -6,7 +6,7 @@
 
   </head>
   <br>
-  <header class="header">
+  <header id="header">
     <div class="header-container">
       <h1 class="header-logo">
         <img
@@ -52,17 +52,30 @@
     $(document).ready(function (){
     document.getElementById('Night-button').addEventListener('click', function () {
       let NightMode = document.body.classList.toggle('Night-Mode');
-
       localStorage.setItem('NightMode', NightMode);
 
-      //localStorage.setItem('dark-theme-enabled2', darkThemeEnabled2);
+      let HeaderElement = document.querySelector("#header");
+        HeaderElement.classList.toggle("Night-Mode");
+        let LinkElement = document.querySelectorAll('.link');
+        for (let i = 0; i < 10; i++) {
+        LinkElement.classList.toggle("pink")}
+
+      
+        
 });
       
-    });
+    
+    //localStorage.setItem('dark-theme-enabled2', darkThemeEnabled2);
     if (JSON.parse(localStorage.getItem('NightMode'))) {
         document.body.classList.add('Night-Mode');
+        document.querySelector("#header").classList.add("Night-Mode");
+        document.querySelectorAll(".link").classList.add("pink");
+    
+    }});
+    
+
         
-}
+
   </script>
 
   

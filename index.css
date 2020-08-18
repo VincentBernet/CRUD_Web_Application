@@ -94,13 +94,17 @@ a {
   font-size: 16px;
   letter-spacing: 0px;
   word-spacing: 0px;
-  color: #ffb8ff;
+  color: green;
   font-weight: 400;
   -webkit-text-decoration: underline solid #444444;
           text-decoration: underline solid #444444;
   font-style: italic;
   font-variant: normal;
   text-transform: none;
+}
+
+a.pink {
+  color: #ffb8ff;
 }
 
 .login-box,

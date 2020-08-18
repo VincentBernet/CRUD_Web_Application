@@ -60,14 +60,14 @@ include('header.php');?>
   while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
   {
       echo ('<tr><td>');
-      echo('<a class= href="view.php?profile_id='.$row["profile_id"].'">'.htmlentities($row["first_name"]).'</a  |'.htmlentities($row["last_name"]));
+      echo('<a class="link" href="view.php?profile_id='.$row["profile_id"].'">'.htmlentities($row["first_name"]).'</a  |'.htmlentities($row["last_name"]));
       echo('</td><td>');
       echo(htmlentities($row["headline"]));
       echo('</td><td>');
       if ($row['user_id']==$_SESSION['user_id'])
       {
-        echo('<a  href="edit.php?profile_id='.$row['profile_id'].'&user_id='.$row['user_id'].'">Edit</a> / ');
-        echo('<a  href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
+        echo('<a class="link" href="edit.php?profile_id='.$row['profile_id'].'&user_id='.$row['user_id'].'">Edit</a> / ');
+        echo('<a class="link" href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
       }
       else
       {
@@ -75,9 +75,9 @@ include('header.php');?>
       }
       echo("</td></tr>\n");}
 
-  echo('</table><a  href="add.php">Add New Entry</a>');
+  echo('</table><a class="link" href="add.php">Add New Entry</a>');
   // Possibility to Logout
-  echo('<br><a  href="logout.php">Logout</a>');
+  echo('<br><a class="link" href="logout.php">Logout</a>');
 
 }?>
 </body>
@@ -102,8 +102,8 @@ include('header.php');?>
           echo("</td><td>");
           if ($row['user_id']==$_SESSION['user_id'])
           {
-            echo('<a  href="edit.php?profile_id='.$row['profile_id'].'">Edit</a> / ');
-            echo('<a  href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
+            echo('<a class="link" href="edit.php?profile_id='.$row['profile_id'].'">Edit</a> / ');
+            echo('<a class="link" href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
           }
           else
           {
