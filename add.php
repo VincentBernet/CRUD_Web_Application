@@ -111,7 +111,7 @@
 
 
 <!-- View part : Our Add form -->
-<div class="add-box">
+<div class="add-box" style="top:95%;">
   <?php
     echo('<div class="Titre" style="text-align:center;">
         Adding Profiles for '.$_SESSION["name"].'</div>');
@@ -192,9 +192,9 @@
     window.console && console.log("The dom is ready: Script begin");
     $("#addPos").click(function(event){
       event.preventDefault();
-      if (countPos>=9)
+      if (countPos>=3)
       {
-        alert("Maximum of nine position entries exceeded");
+        alert("Maximum of three position entries exceeded");
         return;
       }
       countPos++;
@@ -215,9 +215,9 @@
     countEdu = 0;
     $("#addEdu").click(function(event){
       event.preventDefault();
-      if (countEdu>=9)
+      if (countEdu>=3)
       {
-        alert("Maximum of nine education entries exceeded");
+        alert("Maximum of three education entries exceeded");
         return;
       }
       countEdu++;
@@ -238,6 +238,6 @@
 );
 </script>
 </div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

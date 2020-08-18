@@ -5,7 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   </head>
-
+  <br>
   <header class="header">
     <div class="header-container">
       <h1 class="header-logo">
@@ -42,18 +42,29 @@
             ?>
         </ul>
       </nav>
-      <button id="Night-button" name="Night">Night Mode</button>
+      <span> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+      
+      
     </div>
-
-
+    </header>
+    <button id="Night-button" name="Night">Night Mode</button>
   <script type='text/javascript'>
     $(document).ready(function (){
     document.getElementById('Night-button').addEventListener('click', function () {
       let NightMode = document.body.classList.toggle('Night-Mode');
+
       localStorage.setItem('NightMode', NightMode);
+
       //localStorage.setItem('dark-theme-enabled2', darkThemeEnabled2);
-});});
+});
+      
+    });
+    if (JSON.parse(localStorage.getItem('NightMode'))) {
+        document.body.classList.add('Night-Mode');
+        
+}
   </script>
 
-  </header>
+  
+  
 </html>

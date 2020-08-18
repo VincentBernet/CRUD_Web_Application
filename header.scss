@@ -24,16 +24,12 @@ body {
 	border-radius: 50%;
 	background-color: #66ff99;
 	border: 5px solid #31e981;
-	padding: 1px;
-	max-width: 20%;
+	max-width: 9vmin;
 	height: auto;
 	transition: box-shadow 0.7s, transform 2s;
 }
 
 header .header-container .TitreSite {
-	position: absolute;
-	left: 18%;
-	right: auto;
 	font-family: 'Lucida Console', Monaco, monospace;
 	font-size: 4.2vmin;
 	letter-spacing: 0.6px;
@@ -61,6 +57,7 @@ header .header-container .TitreSite {
 header .header-container {
 	display: flex;
 	align-items: center;
+	margin-right: 25px;
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
@@ -100,7 +97,7 @@ header .header-container {
 #Night-button {
 	background: #000000;
 	background: linear-gradient(#000000, #073763);
-	border: 4px solid #e06666;
+	border: 4px solid $Light_Mode_Text;
 	border-radius: 1000px;
 	width: 10%;
 	height: 5vmin;
@@ -108,11 +105,14 @@ header .header-container {
 	display: inline-block;
 	font: normal bold 2vmin 'Ubuntu', sans-serif;
 	text-align: center;
-	transition: all 3s ease-out;
-
+	transition: all 1s ease-out;
+	position: fixed;
+	top: 10%;
+	right: 13%;
 	&:hover {
-		color: red;
-		background-color: red;
+		color: $Light_Mode_Text;
+		background: $Night_Mode_Text;
+		border: 5px solid black;
 	}
 }
 

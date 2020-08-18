@@ -75,7 +75,7 @@ session_start();
   ?>
   <!-- Redirect to index.php when we are done at looking this profile information. -->
   <p>
-    <a href="index.php">Done</a>
+    <a class="Light_Link" href="index.php">Done</a>
   </p>
 
 </body>

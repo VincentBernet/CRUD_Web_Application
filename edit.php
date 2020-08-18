@@ -139,7 +139,7 @@ $profile_id = $row['profile_id'];
 ?>
 <br>
 <!-- View part : Our Edit form -->
-<div class="add-box">
+<div class="add-box" style="top:95%";>
   <h1 class="Titre2">Editing Profile for UMSI</h1>
   <form method="post" action="edit.php">
 

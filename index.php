@@ -22,24 +22,30 @@ session_start();
 // We call our header page
 include('header.php');?>
 <body>
-
   <?php
   // Begining of the View Part :
 
 
   // Flash Message : print the result of our login / add / Logout / register action
   flashMessages();
+  
   // If we are not login yet : display first version of our index file
   if (!isset($_SESSION["email"]))
   {
   echo('    <div class="container">
   <br>
-            <div class="Titre2">Welcome to the new way of managing your teams collaborator.</div><br><br>
+            <h1 class="Titre2">Welcome to the new way of managing your teams collaborator.</h1><br><br>
              <br>
             <div class="Regular_Text">Before managing your teams members you need to login or register if you don\'t have an account yet.
             <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-          ');}
+
+            ');}
 
   // When we are login-in : display seconde version of our index file
   else
@@ -53,15 +59,15 @@ include('header.php');?>
   $stmt = $pdo->query("SELECT user_id,profile_id,first_name,last_name,	headline FROM profile");
   while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
   {
-      echo "<tr><td>";
-      echo("<a href='view.php?profile_id=".$row['profile_id']."'>".htmlentities($row['first_name'])."</a  |".htmlentities($row['last_name']));
-      echo("</td><td>");
-      echo(htmlentities($row['headline']));
-      echo("</td><td>");
+      echo ('<tr><td>');
+      echo('<a class= href="view.php?profile_id='.$row["profile_id"].'">'.htmlentities($row["first_name"]).'</a  |'.htmlentities($row["last_name"]));
+      echo('</td><td>');
+      echo(htmlentities($row["headline"]));
+      echo('</td><td>');
       if ($row['user_id']==$_SESSION['user_id'])
       {
-        echo('<a href="edit.php?profile_id='.$row['profile_id'].'&user_id='.$row['user_id'].'">Edit</a> / ');
-        echo('<a href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
+        echo('<a  href="edit.php?profile_id='.$row['profile_id'].'&user_id='.$row['user_id'].'">Edit</a> / ');
+        echo('<a  href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
       }
       else
       {
@@ -69,9 +75,9 @@ include('header.php');?>
       }
       echo("</td></tr>\n");}
 
-  echo('</table><a href="add.php">Add New Entry</a>');
+  echo('</table><a  href="add.php">Add New Entry</a>');
   // Possibility to Logout
-  echo('<br><a href="logout.php">Logout</a>');
+  echo('<br><a  href="logout.php">Logout</a>');
 
 }?>
 </body>
@@ -96,8 +102,8 @@ include('header.php');?>
           echo("</td><td>");
           if ($row['user_id']==$_SESSION['user_id'])
           {
-            echo('<a href="edit.php?profile_id='.$row['profile_id'].'">Edit</a> / ');
-            echo('<a href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
+            echo('<a  href="edit.php?profile_id='.$row['profile_id'].'">Edit</a> / ');
+            echo('<a  href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
           }
           else
           {
