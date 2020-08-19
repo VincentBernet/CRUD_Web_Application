@@ -1,165 +1,140 @@
-header {
-	background: #a8dadc;
-	border: 5px solid #457b9d;
+.ChangeColor {
+  color: #f19fc7 !important;
 }
 
-.Night-Mode {
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		from(#141e30),
-		to(#243b55)
-	);
-	background: linear-gradient(#141e30, #243b55);
-	color: white;
+header {
+  background: #a8dadc;
+  border: 5px solid #457b9d;
 }
 
 body {
-	background: #f1faee;
-	color: black;
+  background: #f1faee;
+  color: black;
 }
 
 body.Night-Mode {
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		from(#141e30),
-		to(#243b55)
-	);
-	background: linear-gradient(#141e30, #243b55);
-	color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(#141e30), to(#243b55));
+  background: linear-gradient(#141e30, #243b55);
+  color: white;
+}
+
+.Night-Mode {
+  background: -webkit-gradient(linear, left top, left bottom, from(#141e30), to(#243b55));
+  background: linear-gradient(#141e30, #243b55);
+  color: white;
 }
 
 .header-logo-img {
-	cursor: help;
-	border-radius: 50%;
-	background-color: #66ff99;
-	border: 5px solid #31e981;
-	max-width: 9vmin;
-	height: auto;
-	-webkit-transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
-	transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
-	transition: box-shadow 0.7s, transform 2s;
-	transition: box-shadow 0.7s, transform 2s, -webkit-box-shadow 0.7s,
-		-webkit-transform 2s;
+  cursor: help;
+  border-radius: 50%;
+  background-color: #66ff99;
+  border: 5px solid #31e981;
+  max-width: 9vmin;
+  height: auto;
+  -webkit-transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
+  transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
+  transition: box-shadow 0.7s, transform 2s;
+  transition: box-shadow 0.7s, transform 2s, -webkit-box-shadow 0.7s, -webkit-transform 2s;
 }
 
 header .header-container .TitreSite {
-	font-family: 'Lucida Console', Monaco, monospace;
-	font-size: 4.2vmin;
-	letter-spacing: 0.6px;
-	word-spacing: 1.8px;
-	color: #00120b;
-	font-weight: 700;
-	text-decoration: none;
-	font-style: normal;
-	font-variant: small-caps;
-	text-transform: none;
+  font-family: 'Lucida Console', Monaco, monospace;
+  font-size: 4.2vmin;
+  letter-spacing: 0.6px;
+  word-spacing: 1.8px;
+  color: #00120b;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: none;
 }
 
 .header-logo-img:hover {
-	-webkit-box-shadow: 0 0 2px 15px rgba(0, 140, 186, 0.5);
-	box-shadow: 0 0 2px 15px rgba(0, 140, 186, 0.5);
-	-webkit-transform: rotate(720deg);
-	transform: rotate(720deg);
+  -webkit-box-shadow: 0 0 2px 15px rgba(0, 140, 186, 0.5);
+          box-shadow: 0 0 2px 15px rgba(0, 140, 186, 0.5);
+  -webkit-transform: rotate(720deg);
+          transform: rotate(720deg);
 }
 
 .header-container {
-	width: 1920px;
-	max-width: 100%;
-	padding: 5px;
-	margin: 0 auto;
+  width: 1920px;
+  max-width: 100%;
+  padding: 5px;
+  margin: 0 auto;
 }
 
 header .header-container {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	margin-right: 25px;
-	-ms-flex-pack: distribute;
-	justify-content: space-around;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 25px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .header-nav-list {
-	margin: 1em 0 0.5em;
-	text-align: center;
+  margin: 1em 0 0.5em;
+  text-align: center;
 }
 
 .header-nav-list li {
-	color: #00120b;
-	display: inline;
+  color: #00120b;
+  display: inline;
 }
 
 .header-nav a {
-	display: inline-block;
-	font-family: 'Lucida Console', Monaco, monospace;
-	font-size: 2.2vmin;
-	letter-spacing: 0.6px;
-	word-spacing: 1.8px;
-	color: #1d3557;
-	font-weight: 700;
-	text-decoration: underline;
-	font-style: normal;
-	font-variant: small-caps;
-	text-transform: none;
-	padding: 0.5em 1.5em;
+  display: inline-block;
+  font-family: 'Lucida Console', Monaco, monospace;
+  font-size: 2.2vmin;
+  letter-spacing: 0.6px;
+  word-spacing: 1.8px;
+  color: #1d3557;
+  font-weight: 700;
+  text-decoration: underline;
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: none;
+  padding: 0.5em 1.5em;
+  -webkit-transition: all 3s ease-out;
+  transition: all 3s ease-out;
 }
 
 .header-nav a:hover {
-	color: #e63946;
+  color: #e63946;
 }
 
 .forbidden {
-	cursor: no-drop;
+  cursor: no-drop;
 }
 
 #Night-button {
-	background: #000000;
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		from(#000000),
-		to(#073763)
-	);
-	background: linear-gradient(#000000, #073763);
-	border: 4px solid black;
-	border-radius: 1000px;
-	width: 10%;
-	height: 5vmin;
-	color: #ffffff;
-	display: inline-block;
-	font: normal bold 2vmin 'Ubuntu', sans-serif;
-	text-align: center;
-	-webkit-transition: all 1s ease-out;
-	transition: all 1s ease-out;
-	position: fixed;
-	top: 10%;
-	right: 13%;
+  background: #000000;
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#073763));
+  background: linear-gradient(#000000, #073763);
+  border: 4px solid black;
+  border-radius: 1000px;
+  width: 10%;
+  height: 5vmin;
+  color: #ffffff;
+  display: inline-block;
+  font: normal bold 2vmin 'Ubuntu', sans-serif;
+  text-align: center;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  position: fixed;
+  top: 10%;
+  right: 13%;
 }
 
 #Night-button:hover {
-	color: black;
-	background: white;
-	border: 5px solid black;
-}
-
-.white-theme-button {
-	background: red;
-	border: 4px solid #e06666;
-	border-radius: 1000px;
-	width: 10%;
-	height: 5vmin;
-	color: black;
-	display: inline-block;
-	font: normal bold 2vmin 'Ubuntu', sans-serif;
-	text-align: center;
+  color: black;
+  background: white;
+  border: 5px solid black;
 }
 /*# sourceMappingURL=header.css.map */

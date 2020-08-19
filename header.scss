@@ -3,14 +3,13 @@ $Night_Mode_Gradient: linear-gradient(#141e30, #243b55);
 
 $Light_Mode_Gradient: #f1faee;
 $Light_Mode_Text: black;
+.ChangeColor {
+	color: #f19fc7 !important;
+}
 
 header {
 	background: #a8dadc;
 	border: 5px solid #457b9d;
-}
-.Night-Mode {
-	background: $Night_Mode_Gradient;
-	color: $Night_Mode_Text;
 }
 
 body {
@@ -23,9 +22,11 @@ body {
 	}
 }
 
-.blue {
-	color: blue;
+.Night-Mode {
+	background: $Night_Mode_Gradient;
+	color: $Night_Mode_Text;
 }
+
 .header-logo-img {
 	cursor: help;
 	border-radius: 50%;
@@ -91,6 +92,7 @@ header .header-container {
 	font-variant: small-caps;
 	text-transform: none;
 	padding: 0.5em 1.5em;
+	transition: all 3s ease-out;
 }
 
 .header-nav a:hover {
@@ -121,16 +123,4 @@ header .header-container {
 		background: $Night_Mode_Text;
 		border: 5px solid black;
 	}
-}
-
-.white-theme-button {
-	background: red;
-	border: 4px solid #e06666;
-	border-radius: 1000px;
-	width: 10%;
-	height: 5vmin;
-	color: black;
-	display: inline-block;
-	font: normal bold 2vmin 'Ubuntu', sans-serif;
-	text-align: center;
 }

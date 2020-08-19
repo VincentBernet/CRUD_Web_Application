@@ -27,16 +27,16 @@
             <?php
               if (!isset($_SESSION['email']))
               {
-                echo('<li><a href="index.php">Home</a></li>');
-                echo('<li><a href="login.php">Login</a></li>');
-                echo('<li><a href="register.php">Register</a></li>');
-                echo('<li><a href="add.php" class="forbidden">Add New profile</a></li>');
+                echo('<li><a class="linkChange" href="index.php">Home</a></li>');
+                echo('<li><a class="linkChange" href="login.php">Login</a></li>');
+                echo('<li><a class="linkChange" href="register.php">Register</a></li>');
+                echo('<li><a class="linkChange" href="add.php" class="forbidden">Add New profile</a></li>');
               }
               else
               {
-                echo('<li><a href="index.php">TeamsView</a></li>');
-                echo('<li><a href="logout.php">logout</a></li>');
-                echo('<a href="add.php">Add New profile</a>');
+                echo('<li><a class="linkChange" href="index.php">TeamsView</a></li>');
+                echo('<li><a class="linkChange" href="logout.php">logout</a></li>');
+                echo('<a class="linkChange" href="add.php">Add New profile</a>');
 
               }
             ?>
@@ -56,9 +56,21 @@
 
       let HeaderElement = document.querySelector("#header");
         HeaderElement.classList.toggle("Night-Mode");
-        let LinkElement = document.querySelectorAll('.link');
-        for (let i = 0; i < 10; i++) {
-        LinkElement.classList.toggle("pink")}
+    
+
+        let NavElement = document.querySelectorAll(".linkChange");
+        for (i=0;i<NavElement.length;i++)
+        {
+          NavElement[i].classList.toggle("ChangeColor");
+        }
+        
+        let LinkElement = document.querySelectorAll(".linkChange2");
+        for (i=0;i<LinkElement.length;i++)
+        {
+          LinkElement[i].classList.toggle("ChangeColor");
+        }
+        
+        
 
       
         
@@ -69,13 +81,22 @@
     if (JSON.parse(localStorage.getItem('NightMode'))) {
         document.body.classList.add('Night-Mode');
         document.querySelector("#header").classList.add("Night-Mode");
-        document.querySelectorAll(".link").classList.add("pink");
-    
+        
+        let NavElement = document.querySelectorAll(".linkChange");
+        for (i=0;i<NavElement.length;i++)
+        {
+          NavElement[i].classList.add("ChangeColor");
+        }
+        
+        let LinkElement = document.querySelectorAll(".linkChange2");
+        for (i=0;i<LinkElement.length;i++)
+        {
+          LinkElement[i].classList.add("ChangeColor");
+        }
     }});
     
 
         
-
   </script>
 
   
