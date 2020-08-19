@@ -16,7 +16,7 @@
         />
       </h1>
 
-      <h2 class="TitreSite">
+      <h2 id="TitreSite">
         Management Plateform
       </h2>
       <nav class="header-nav">
@@ -56,7 +56,9 @@
 
       let HeaderElement = document.querySelector("#header");
         HeaderElement.classList.toggle("Night-Mode");
-    
+      
+      let TitleElement = document.querySelector("#TitreSite");
+        TitleElement.classList.toggle("Titre-Night-Mode");
 
         let NavElement = document.querySelectorAll(".linkChange");
         for (i=0;i<NavElement.length;i++)
@@ -81,7 +83,8 @@
     if (JSON.parse(localStorage.getItem('NightMode'))) {
         document.body.classList.add('Night-Mode');
         document.querySelector("#header").classList.add("Night-Mode");
-        
+        document.querySelector("#TitreSite").classList.add("Titre-Night-Mode");
+
         let NavElement = document.querySelectorAll(".linkChange");
         for (i=0;i<NavElement.length;i++)
         {

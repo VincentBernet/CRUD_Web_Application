@@ -5,11 +5,20 @@ $Light_Mode_Gradient: #f1faee;
 $Light_Mode_Text: black;
 .ChangeColor {
 	color: #f19fc7 !important;
+	opacity: 1;
 }
 
+.header-nav a .ChangeColor:hover {
+	box-shadow: 0 0 2px 15px rgba(0, 140, 186, 0.5);
+}
 header {
 	background: #a8dadc;
 	border: 5px solid #457b9d;
+}
+
+.Titre-Night-Mode {
+	text-decoration: underline !important;
+	color: $Night_Mode_Text !important;
 }
 
 body {
@@ -37,7 +46,8 @@ body {
 	transition: box-shadow 0.7s, transform 2s;
 }
 
-header .header-container .TitreSite {
+header .header-container #TitreSite {
+	background: transparent !important;
 	font-family: 'Lucida Console', Monaco, monospace;
 	font-size: 4.2vmin;
 	letter-spacing: 0.6px;
@@ -48,6 +58,8 @@ header .header-container .TitreSite {
 	font-style: normal;
 	font-variant: small-caps;
 	text-transform: none;
+	transition: all 3s ease-out;
+	transition-delay: 1s;
 }
 
 .header-logo-img:hover {
@@ -92,7 +104,7 @@ header .header-container {
 	font-variant: small-caps;
 	text-transform: none;
 	padding: 0.5em 1.5em;
-	transition: all 3s ease-out;
+	transition: opacity 3s ease-out;
 }
 
 .header-nav a:hover {
