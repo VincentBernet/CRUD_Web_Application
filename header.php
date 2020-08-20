@@ -30,7 +30,7 @@
                 echo('<li><a class="linkChange" href="index.php">Home</a></li>');
                 echo('<li><a class="linkChange" href="login.php">Login</a></li>');
                 echo('<li><a class="linkChange" href="register.php">Register</a></li>');
-                echo('<li><a class="linkChange" href="add.php" class="forbidden">Add New profile</a></li>');
+                echo('<li><a class="linkChange forbidden" href="add.php">Add New profile</a></li>');
               }
               else
               {
