@@ -39,9 +39,11 @@ include('header.php');?>
             <div class="Regular_Text">Before managing your teams members you need to login or register if you don\'t have an account yet.
             <br> Turn on on the Night Mode button, don\'t harm your eyes !
             <br>  This Website is a complete CRUD (Create, Read, Update, Delete) application made by Vincent Bernet as a Side project during Coursera\'s certification from the university of Michigan. <br>
-            Short list of Technologies used : <br><ul> FrontEnd part : <li>Html, SCSS, JavaScript ( & jQuerry )</li> BackEnd part : <li> PHP,
+            Short list of Technologies used : <br>
 </div>
-            ');}
+<br> 
+<ul class="Regular_Text">  <li>FrontEnd part : Html, SCSS, JavaScript ( & jQuerry )</li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>BackEnd part : PHP</li>
+       </ul>     ');}
 
   // When we are login-in : display seconde version of our index file
   else
