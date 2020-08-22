@@ -15,7 +15,7 @@
           alt="Oups my logo should have been here"
         />
       </h1>
-
+      
       <h2 id="TitreSite">
         Management Plateform
       </h2>
@@ -42,9 +42,15 @@
             ?>
         </ul>
       </nav>
-      <span> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
       
-      
+      <div class="share-button">
+        <span>Share Me</span>
+          <a href="#" ><i class="fab fa-facebook-f"><img srx="Ressource/Twitter.png" alt="Twitter"/></i></a>
+          <a href="#" ><i class="fab fa-twitter"></i></a>
+          <a href="#" ><i class="fab fa-instagram"></i></a>
+          <a href="#" ><i class="fab fa-linkedin-in"></i></a>
+      </div>
+
     </div>
     </header>
     <button id="Night-button" name="Night">Night Mode</button>

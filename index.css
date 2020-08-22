@@ -52,8 +52,7 @@ body {
   font-size: 1.125rem;
   line-height: 30px;
   line-height: 1.875rem;
-  text-align: center;
-  margin-left: 20%;
+  margin-left: auto;
   margin-right: auto;
   display: -webkit-box;
   display: -ms-flexbox;

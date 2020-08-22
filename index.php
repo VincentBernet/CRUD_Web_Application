@@ -43,7 +43,9 @@ include('header.php');?>
 </div>
 <br> 
 <ul class="Regular_Text">  <li>FrontEnd part : Html, SCSS, JavaScript ( & jQuerry )</li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>BackEnd part : PHP</li>
-       </ul>     ');}
+       </ul> <div class="Regular_Text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum volutpat ex. Aenean libero felis, cursus a lacus vitae, vestibulum congue sem. Curabitur euismod suscipit enim, nec semper elit euismod sed. Sed accumsan nec augue quis ultrices. Cras varius viverra risus sit amet interdum. Praesent blandit varius nisl, at mollis mauris. Nulla sed diam non libero euismod convallis id non mi. Duis consectetur tincidunt maximus. Suspendisse tempor velit id sem congue, vitae rutrum quam lacinia. In dapibus urna quis consectetur hendrerit. Quisque consequat et lorem fermentum faucibus. Sed ac nisi in orci lobortis ultricies. Duis malesuada turpis sed enim aliquam, vulputate varius turpis iaculis.
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum volutpat ex. Aenean libero felis, cursus a lacus vitae, vestibulum congue sem. Curabitur euismod suscipit enim, nec semper elit euismod sed. Sed accumsan nec augue quis ultrices. Cras varius viverra risus sit amet interdum. Praesent blandit varius nisl, at mollis mauris. Nulla sed diam non libero euismod convallis id non mi. Duis consectetur tincidunt maximus. Suspendisse tempor velit id sem congue, vitae rutrum quam lacinia. In dapibus urna quis consectetur hendrerit. Quisque consequat et lorem fermentum faucibus. Sed ac nisi in orci lobortis ultricies. Duis malesuada turpis sed enim aliquam, vulputate varius turpis iaculis.
+       </div>     ');}
 
   // When we are login-in : display seconde version of our index file
   else
