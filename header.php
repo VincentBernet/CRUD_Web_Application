@@ -45,10 +45,9 @@
       
       <div class="share-button">
         <span>Share Me</span>
-          <a href="#" ><i class="fab fa-facebook-f"><img srx="Ressource/Twitter.png" alt="Twitter"/></i></a>
-          <a href="#" ><i class="fab fa-twitter"></i></a>
-          <a href="#" ><i class="fab fa-instagram"></i></a>
-          <a href="#" ><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" ><i class="fab fa-facebook-f"><img class="twitter" src="Ressource/Twitter.png" alt="Twitter"/></i></a>
+          <a href="#" ><i class="fab fa-twitter"><img class="twitter" src="Ressource/Twitter.png" alt="Twitter"/></i></a>
+          <a href="#" ><i class="fab fa-instagram"><img class="twitter" src="Ressource/Twitter.png" alt="Twitter"/></i></a>
       </div>
 
     </div>
