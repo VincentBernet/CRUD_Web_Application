@@ -72,11 +72,12 @@ First you need to have a local server environment like MAMP or XAMP.<br /><br />
 
 TODO: End of SQL Querrys
 
-4] Go to pdo.php file and change the following statements :
+4] Go to pdo.php file and change the port number to 8808 <br/>
+(only if you are on Mac or if your local server environment default port number is not 3306)  :
+&nbsp;&nbsp;&nbsp; ![Pdo.php](Screenshot_ReadMe/Pdo.JPG)
 
-
-5] Run the index file
-
+5] Run the index.php file on your browser, if no SQL error's statement pop everything work !
+If there is some error check your database and your port number.
 
 ## Features
 ## Usage (Optional)
