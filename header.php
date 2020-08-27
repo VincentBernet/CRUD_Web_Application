@@ -43,16 +43,14 @@
         </ul>
       </nav>
       
-      <div class="share-button">
-        <span>Check Me</span>
-          <a href="https://www.linkedin.com/in/vincent-bernet-028a64193/" target="_blank"><i class="fab fa-linkedin"><img class="twitter" src="Ressource/Linkedin.png" alt="Vincent Bernet Linkedin Profile"/></i></a>
-          <a href="https://github.com/VincentBernet" target="_blank"><i class="fab fa-github"><img class="twitter" src="Ressource/github.png" alt="Vincent Bernet Github Profile"/></i></a>
-          <a href="#" target="_blank"><i class="fab fa-twitter"><img class="twitter" src="Ressource/Twitter.png" alt="Vincent Bernet Twitter Profile"/></i></a>
-      </div>
+      
 
     </div>
     </header>
+
+    
     <button id="Night-button" name="Night">Night Mode</button>
+
   <script type='text/javascript'>
     $(document).ready(function (){
     document.getElementById('Night-button').addEventListener('click', function () {
@@ -107,6 +105,6 @@
         
   </script>
 
-  
+
   
 </html>

@@ -80,43 +80,12 @@ include('header.php');?>
   echo('<br><a class="linkChange2" href="logout.php">Logout</a>');
 
 }?>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br>
 </body>
+
+<?php
+// We call our header page
+include('footer.php');?>
 </html>
 
 
-<?php
-  // TODO Try to set a search button on our data view, but php seems to not be the best option, JS looks better with his interactivity
-  /*else
-  {
-    echo("<div class='Titre'>Vincent Bernet's Resume Registry<br>Welcome to :".$_SESSION['name']."</div>");
-    echo('<table border="1">'."\n");
-    $sql = "SELECT user_id,profile_id,first_name,last_name,	headline FROM profile WHERE first_name LIKE :first_name% ";
-    $stmt = $pdo-> prepare($sql);
-    $stmt->execute(array(
-      ':first_name' => $_POST['search']));
-    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
-          echo "<tr><td>";
-          echo(htmlentities($row['first_name'])." | ".htmlentities($row['last_name']));
-          echo("</td><td>");
-          echo(htmlentities($row['headline']));
-          echo("</td><td>");
-          if ($row['user_id']==$_SESSION['user_id'])
-          {
-            echo('<a class="link" href="edit.php?profile_id='.$row['profile_id'].'">Edit</a> / ');
-            echo('<a class="link" href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
-          }
-          else
-          {
-            echo('Can\'t access');
-          }
-          echo("</td></tr>\n");}
-          echo("<form method='post'>
-            <p> Search
-            <input type='text' name='search'/> </p>
-            <input type='submit' value='Add'/>
-          </form>");
-  }*/
-
-  //<br><br>
-?>

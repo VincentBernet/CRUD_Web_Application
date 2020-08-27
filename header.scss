@@ -11,6 +11,7 @@ $Light_Mode_Text: black;
 .header-nav a .ChangeColor:hover {
 	box-shadow: 0 0 2px 15px rgba(0, 140, 186, 0.5);
 }
+
 header {
 	background: #a8dadc;
 	border: 5px solid #457b9d;
@@ -82,6 +83,13 @@ header .header-container {
 	flex-wrap: wrap;
 }
 
+footer .header-container {
+	display: flex;
+	align-items: center;
+	margin-right: 25px;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
 .header-nav-list {
 	margin: 1em 0 0.5em;
 	text-align: center;
@@ -199,4 +207,15 @@ header .header-container {
 .twitter {
 	max-width: 2.5vmin;
 	height: auto;
+}
+
+#footer {
+	color: blue;
+}
+
+.footer-open-img {
+	cursor: help;
+	max-width: 30vmin;
+	height: auto;
+	transition: box-shadow 0.7s, transform 2s;
 }

@@ -94,6 +94,20 @@ header .header-container {
       flex-wrap: wrap;
 }
 
+footer .header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 25px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .header-nav-list {
   margin: 1em 0 0.5em;
   text-align: center;
@@ -243,5 +257,19 @@ header .header-container {
 .twitter {
   max-width: 2.5vmin;
   height: auto;
+}
+
+#footer {
+  color: blue;
+}
+
+.footer-open-img {
+  cursor: help;
+  max-width: 30vmin;
+  height: auto;
+  -webkit-transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
+  transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
+  transition: box-shadow 0.7s, transform 2s;
+  transition: box-shadow 0.7s, transform 2s, -webkit-box-shadow 0.7s, -webkit-transform 2s;
 }
 /*# sourceMappingURL=header.css.map */
