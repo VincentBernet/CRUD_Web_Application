@@ -6,7 +6,7 @@
 ***INSERT ANOTHER GRAPHIC HERE***
 
 
-![Pdo.php](Screenshot_ReadMe/Pdo.jpg)
+![Pdo.php](Screenshot_ReadMe/Pdo.JPG)
 
 > GIF Tools
 
