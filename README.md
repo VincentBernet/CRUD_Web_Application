@@ -1,19 +1,12 @@
 # CRUD_Web_Application
-Complete Crud Web application !
 
-# Repository Title Goes Here
 
-> This is CRUD (Create, Read, Update, Delete) application website
-
-> #php
-
+> This is Complete Crud (Create, Read, Update, Delete) Web Application !
 
 ***INSERT ANOTHER GRAPHIC HERE***
 
-[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()
 
-- Most people will glance at your `README`, *maybe* star it, and leave
-- Ergo, people should understand instantly what your project is about based on your repo
+![Pdo.php](Screenshot_ReadMe/Crud.JPG)
 
 > GIF Tools
 
@@ -28,125 +21,131 @@ Complete Crud Web application !
 
 ## Table of Contents (Optional)
 
-> If your `README` has a lot of info, section headers might be nice.
-
 - [Installation](#installation)
 - [Features](#features)
-- [Contributing](#contributing)
 - [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
-
 
 ---
 
 ## Installation
 
-First you need to have a local server environment like MAMP or XAMP.<br /><br />
-1] Download the whole github folder in your htdocs folder<br />
-2] Go on your PHPmyAdmins page and create a new database named crud<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (you can use the following code : CREATE DATABASE crud DEFAULT CHARACTER SET utf8 ;)<br />
-3] Go in Sql interface of this DataBase and copy paste the following Sql querrys :<br />
-  
-  GRANT ALL ON crud.* TO 'Admin'@'localhost' IDENTIFIED BY '1234';<br />
-  GRANT ALL ON crud.* TO 'Admin'@'127.0.0.1' IDENTIFIED BY '1234';<br />
+First you need to have a local server environment like MAMP or XAMP <br /><br />
+1] Download the whole github folder in your htdocs folder <br />
+2] Go on your PHPmyAdmins page and create a new database named crud <br />
+(you can use the following code : CREATE DATABASE crud DEFAULT CHARACTER SET utf8 ;) <br />
+3] Go in Sql interface of this DataBase and copy paste the following Sql querrys : <br />
 
-  CREATE TABLE users (<br />
-    user_id INTEGER NOT NULL AUTO_INCREMENT,<br />
-    name VARCHAR(128),<br />
-    email VARCHAR(128),<br />
-    password VARCHAR(128),<br />
-    PRIMARY KEY(user_id),<br />
-    INDEX(email)<br />
-  ) ENGINE=InnoDB CHARSET=utf8;<br />
+ ```
+  GRANT ALL ON crud.* TO 'Admin'@'localhost' IDENTIFIED BY '1234';
+  GRANT ALL ON crud.* TO 'Admin'@'127.0.0.1' IDENTIFIED BY '1234';
 
-  ALTER TABLE users ADD INDEX(email);<br />
+  CREATE TABLE users (
+    user_id INTEGER NOT NULL AUTO_INCREMENT,
+    name VARCHAR(128),
+    email VARCHAR(128),
+    password VARCHAR(128),
+    PRIMARY KEY(user_id),
+    INDEX(email)
+  ) ENGINE=InnoDB CHARSET=utf8;
+
+  ALTER TABLE users ADD INDEX(email);
   ALTER TABLE users ADD INDEX(password);
-<br />
-  INSERT INTO users (name,email,password) <br />
-  VALUES ('UserDefault','vincent.bernet@efrei.net','1a52e17fa899cf40fb04cfc42e6352f1');<br />
+  
+  INSERT INTO users (name,email,password) 
+  VALUES ('UserDefault','vincent.bernet@efrei.net','1a52e17fa899cf40fb04cfc42e6352f1');
 
   INSERT INTO users (name,email,password) 
   VALUES ('UMSI','umsi@umich.edu','1a52e17fa899cf40fb04cfc42e6352f1');
+  
+CREATE TABLE Profile (
+  profile_id INTEGER NOT NULL AUTO_INCREMENT,
+  user_id INTEGER NOT NULL,
+  first_name TEXT,
+  last_name TEXT,
+  email TEXT,
+  headline TEXT,
+  summary TEXT,
+  PRIMARY KEY(profile_id),
+  CONSTRAINT profile_ibfk_2
+  FOREIGN KEY (user_id)
+  REFERENCES users (user_id)
+  ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;<br />
 
-TODO: End of SQL Querrys
+CREATE TABLE Position (
+  position_id INTEGER NOT NULL AUTO_INCREMENT,
+  profile_id INTEGER,
+  rank INTEGER,
+  year INTEGER,
+  description TEXT,
+  PRIMARY KEY(position_id),
+  CONSTRAINT position_ibfk_1
+    FOREIGN KEY (profile_id)
+    REFERENCES Profile (profile_id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-4] Go to pdo.php file and change the port number to 8808 <br/>
-(only if you are on Mac or if your local server environment default port number is not 3306)  :
+CREATE TABLE Institution (
+  institution_id INTEGER NOT NULL KEY AUTO_INCREMENT,
+  name VARCHAR(255),
+  UNIQUE(name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE Education (
+  profile_id INTEGER,
+  institution_id INTEGER,
+  rank INTEGER,
+  year INTEGER,
+  CONSTRAINT education_ibfk_1
+    FOREIGN KEY (profile_id)
+    REFERENCES Profile (profile_id)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT education_ibfk_2
+    FOREIGN KEY (institution_id)
+    REFERENCES Institution (institution_id)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  PRIMARY KEY(profile_id, institution_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+```
+
+4] Only if you are on Mac : Go to pdo.php file and change the port number to 8808 <br/>
+
 &nbsp;&nbsp;&nbsp; ![Pdo.php](Screenshot_ReadMe/Pdo.JPG)
 
 5] Run the index.php file on your browser, if no SQL error's statement pop everything work !
 If there is some error check your database and your port number.
 
 ## Features
-## Usage (Optional)
-## Documentation (Optional)
-## Tests (Optional)
+On this application i implemetended multiples features such as :
+ - Login/Register/Logout possibility linked to our DataBase
+ - Complete CRUD application
+ - Posibility to read/edit/delete only the profile created your own userprofile. 
+ - Data validation all over our forms (via php and some java alert), using Session to set flash message
+ - All forms use Session to avoid reloading the page and get anoying pops up and ressending data to our database with only Post.
+ - Night mode button using Java script to change css of our whole website, using changment of CSS on the DOM and saving those on localstorage
+ - Html and CSS injections protection via Html entities and using pdo to make the link beetween our page and our DataBase
 
-- Going into more detail on code and technologies used
-- I utilized this nifty <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a> for this sample `README`.
-
----
-
-## Contributing
-
-> To get started...
-
-### Step 1
-
-- **Option 1**
-    - 🍴 Fork this repo!
-
-- **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
-
-### Step 2
-
-- **HACK AWAY!** 🔨🔨🔨
-
-### Step 3
-
-- 🔃 Create a new pull request using <a href="https://github.com/joanaz/HireDot2/compare/" target="_blank">`https://github.com/joanaz/HireDot2/compare/`</a>.
 
 ---
-
 ## Team
 
-> Or Contributors/People
+> Whole application was made by me when i was getting a coursera specialisation on web developpment :
 
-| <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
-| :---: |:---:| :---:|
-| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
-| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
+ <a href="https://github.com/VincentBernet.com" target="_blank">**FullStack**</a> |
+|:---:|
+| [![FVCproductions](https://avatars3.githubusercontent.com/u/54962581?s=300)](https://github.com/VincentBernet.com)    |
+| <a href="https://github.com/VincentBernet.com" target="_blank">`github.com/BernetProductions`</a> |
 
-- You can just grab their GitHub profile image URL
-- You should probably resize their picture using `?s=200` at the end of the image URL.
 
----
-
-## FAQ
-
-- **How do I do *specifically* so and so?**
-    - No problem! Just do this.
 
 ---
 
-## Support
 
-Reach out to me at one of the following places!
+- Don't hesitate to contact me on Github or on Linkedin, i'm currently seeking an intership around Paris for April 2021 :
 
-- Website at <a href="http://fvcproductions.com" target="_blank">`fvcproductions.com`</a>
-- Twitter at <a href="http://twitter.com/fvcproductions" target="_blank">`@fvcproductions`</a>
-- Insert more social links here.
-
----
-
-## Donations (Optional)
-
-- You could include a <a href="https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png" target="_blank">Gratipay</a> link as well.
-
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/fvcproductions/)
+[![Linkedin](https://thelinkedinman.com/wp-content/uploads/2016/02/View-my-LinkedIn-profile-image-3-300x140.png)](https://www.linkedin.com/in/vincent-bernet-028a64193/)
 
 
 ---
@@ -156,4 +155,4 @@ Reach out to me at one of the following places!
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2015 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>.
+- Copyright 2021 © <a href="https://www.linkedin.com/in/vincent-bernet-028a64193/" target="_blank">Bernet Vincent</a>.
