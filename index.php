@@ -50,8 +50,8 @@ include('header.php');?>
   // When we are login-in : display seconde version of our index file
   else
   {
-  echo("<div class='Titre'><br>Welcome to :".$_SESSION['name']);
-  echo("<br>Your Team's dashboard </div>");
+  //echo("<div class='Titre'><br>Welcome to :".$_SESSION['name']);
+  //echo("<br>Your Team's dashboard </div>");
   echo('<table border="1" id="myTable">'."\n");
   echo('<br><br><br>');
   // Display few data information of our user, with the option to edit, delete or view them in more detail
