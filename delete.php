@@ -71,4 +71,7 @@ if ( isset($_POST['delete']) && isset($_POST['profile_id']) )
   </form>
 
 </body>
+<?php
+// We call our header page
+include('footer.php');?>
 </html>

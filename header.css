@@ -268,7 +268,7 @@ footer .header-container {
 }
 
 #footer {
-  color: blue;
+  position: relative;
 }
 
 .footer-open-img {

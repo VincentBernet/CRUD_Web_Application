@@ -79,4 +79,7 @@ session_start();
   </p>
 
 </body>
+<?php
+// We call our header page
+include('footer.php');?>
 </html>

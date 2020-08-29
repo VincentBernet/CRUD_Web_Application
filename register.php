@@ -97,4 +97,7 @@
 </div>
 
 </body>
+<?php
+// We call our header page
+include('footer.php');?>
 </html>

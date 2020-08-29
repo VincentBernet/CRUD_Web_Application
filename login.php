@@ -87,6 +87,7 @@
       flashMessages();
   ?>
   <br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <!-- Our login form -->
 <div class="login-box">
   <div class="Titre2">Please Log In</div>
@@ -146,3 +147,7 @@ function doValidate() {
 
 </div>
 </body>
+<?php
+// We call our header page
+include('footer.php');?>
+</html>

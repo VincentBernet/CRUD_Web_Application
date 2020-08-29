@@ -109,6 +109,7 @@
 
   ?>
 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <!-- View part : Our Add form -->
 <div class="add-box" style="top:95%;">
@@ -238,6 +239,8 @@
 );
 </script>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
+<?php
+// We call our header page
+include('footer.php');?>
 </html>

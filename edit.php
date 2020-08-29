@@ -135,11 +135,10 @@ $v =  htmlentities($row['summary']);
 $y = htmlentities($row['profile_id']);
 $profile_id = $row['profile_id'];
 
-
 ?>
-<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- View part : Our Edit form -->
-<div class="add-box" style="top:95%";>
+<div class="add-box">
   <h1 class="Titre2">Editing Profile for UMSI</h1>
   <form method="post" action="edit.php">
 
@@ -279,6 +278,9 @@ $profile_id = $row['profile_id'];
 
   </script>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
+
+<?php
+// We call our header page
+include('footer.php');?>
 </html>
