@@ -52,10 +52,12 @@
 
     
     <button id="Night-button" name="Night">Night Mode</button>
-
+    <audio id="myAudio"  src="ressource/click.mp3" type="audio/mpeg"></audio>
   <script type='text/javascript'>
     $(document).ready(function (){
     document.getElementById('Night-button').addEventListener('click', function () {
+
+      document.getElementById("myAudio").play();
       let NightMode = document.body.classList.toggle('Night-Mode');
       localStorage.setItem('NightMode', NightMode);
 
@@ -89,6 +91,7 @@
         document.body.classList.add('Night-Mode');
         document.querySelector("#header").classList.add("Night-Mode");
         document.querySelector("#TitreSite").classList.add("Titre-Night-Mode");
+
 
         let NavElement = document.querySelectorAll(".linkChange");
         for (i=0;i<NavElement.length;i++)
