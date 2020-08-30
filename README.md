@@ -15,7 +15,7 @@
 
 **Recordit**
 
-![Recordit GIF](Screenshot_ReadMe/Presentation.gif)
+![Recordit GIF](Screenshot_ReadMe/Presentation2.gif)
 
 ---
 
