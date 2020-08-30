@@ -35,16 +35,16 @@ include('header.php');?>
   echo('    <div class="container">
   <br>
             <h1 class="Titre2">Welcome to the new way of managing your teams collaborator.</h1><br><br>
-             <br>
+             
             <div class="Regular_Text">Before managing your teams members you need to login or register if you don\'t have an account yet.
             <br> Turn on on the Night Mode button, don\'t harm your eyes !
             <br>  This Website is a complete CRUD (Create, Read, Update, Delete) application made by Vincent Bernet as a Side project during Coursera\'s certification from the university of Michigan. <br>
             Short list of Technologies used : <br>
 </div>
-<br> 
+
 <ul class="Regular_Text">  <li>FrontEnd part : Html, SCSS, JavaScript ( & jQuerry )</li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>BackEnd part : PHP</li>
        </ul> <div class="Regular_Text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum volutpat ex. Aenean libero felis, cursus a lacus vitae, vestibulum congue sem. Curabitur euismod suscipit enim, nec semper elit euismod sed. Sed accumsan nec augue quis ultrices. Cras varius viverra risus sit amet interdum. Praesent blandit varius nisl, at mollis mauris. Nulla sed diam non libero euismod convallis id non mi. Duis consectetur tincidunt maximus. Suspendisse tempor velit id sem congue, vitae rutrum quam lacinia. In dapibus urna quis consectetur hendrerit. Quisque consequat et lorem fermentum faucibus. Sed ac nisi in orci lobortis ultricies. Duis malesuada turpis sed enim aliquam, vulputate varius turpis iaculis.
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum volutpat ex. Aenean libero felis, cursus a lacus vitae, vestibulum congue sem. Curabitur euismod suscipit enim, nec semper elit euismod sed. Sed accumsan nec augue quis ultrices. Cras varius viverra risus sit amet interdum. Praesent blandit varius nisl, at mollis mauris. Nulla sed diam non libero euismod convallis id non mi. Duis consectetur tincidunt maximus. Suspendisse tempor velit id sem congue, vitae rutrum quam lacinia. In dapibus urna quis consectetur hendrerit. Quisque consequat et lorem fermentum faucibus. Sed ac nisi in orci lobortis ultricies. Duis malesuada turpis sed enim aliquam, vulputate varius turpis iaculis.
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum volutpat ex. Aenean libero felis, cursus a lacus vitae, vestibulum congue sem. Curabitur euismod suscipit enim, nec semper elit euismod sed.
        </div>     ');}
 
   // When we are login-in : display seconde version of our index file
@@ -53,7 +53,7 @@ include('header.php');?>
   //echo("<div class='Titre'><br>Welcome to :".$_SESSION['name']);
   //echo("<br>Your Team's dashboard </div>");
   echo('<table border="1" id="myTable">'."\n");
-  echo('<br><br><br>');
+  echo('<br><br><br><br>');
   // Display few data information of our user, with the option to edit, delete or view them in more detail
 
   $stmt = $pdo->query("SELECT user_id,profile_id,first_name,last_name,	headline FROM profile");
@@ -77,7 +77,7 @@ include('header.php');?>
 
   echo('</table><a class="linkChange2" href="add.php">Add New Entry</a>');
   // Possibility to Logout
-  echo('<br><a class="linkChange2" href="logout.php">Logout</a>');
+  echo('<br><a class="linkChange2" href="logout.php">Logout</a><br><br><br><br><br>');
 
 }?>
 <br><br>
