@@ -15,7 +15,7 @@
 
 **Recordit**
 
-![Recordit GIF](http://g.recordit.co/iLN6A0vSD8.gif)
+![Recordit GIF](Screenshot_ReadMe/Presentation.gif)
 
 ---
 
