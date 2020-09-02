@@ -37,22 +37,22 @@
       // Bunch of condition on the user input, if they are not verified then no insert in DataBase and some indication are send
       if ( strlen($_POST['email']) < 1 || strlen($_POST['pass']) < 1 )
       {
-          $_SESSION["message"] = '<span style="color:red;weight:bold;text-aligne:center;">Email and password are required</span>';
+          $_SESSION["message"] = '<span style="color:red;weight:bold;text-align:center;">Email and password are required</span>';
           header("Location: login.php");
           return;
       }
 
       else if (strpos($_POST["email"],'@') === false)
       {
-        $_SESSION["message"] ='<span style="color:red;weight:bold;text-aligne:center;">Email must have an at-sign (@)</span>';
+        $_SESSION["message"] ='<span style="color:red;weight:bold;text-align:center;">Email must have an at-sign (@)</span>';
         header("Location: login.php");
         return;
       }
       else
       {
       // Every input looks fine so let's verify the password
-          $salt = 'XyZzy12*_';
-          $check = hash('md5', $salt.$_POST['pass']);
+      $salt = 'XyZzy12*_';
+      $check = hash('md5', $salt.$_POST['pass']);
 
           $stmt = $pdo->prepare('SELECT user_id, name, email FROM users WHERE email = :em AND password = :pass');
           $stmt->execute(array( ':em' => $_POST['email'], ':pass' => $check));
@@ -63,7 +63,7 @@
               $_SESSION['email']=$_POST['email'];
               $_SESSION['name'] = $row['name'];
               $_SESSION['user_id'] = $row['user_id'];
-              $_SESSION["message"]='<span style="color:green;weight:bold;text-aligne:center;">Logged In.</span><br>';
+              $_SESSION["message"]='<span style="color:green;weight:bold;text-align:center;">Logged In.</span><br>';
               // Save our error_log just in case
               error_log("Login sucess ".$_POST["email"]."$check");
               header("Location: index.php");
@@ -72,7 +72,7 @@
             else {
 
               error_log("Login fail ".$_POST["email"]."$check");
-              $_SESSION["message"] = '<span style="color:red;weight:bold;text-aligne:center;">Password and Email don\'t match (Incorrect Password or Incorrect Email).';
+              $_SESSION["message"] = '<span style="color:red;weight:bold;text-align:center;">Password and Email don\'t match (Incorrect Password or Incorrect Email).';
               unset($_SESSION["email"]);
               header("Location: login.php");
               return;

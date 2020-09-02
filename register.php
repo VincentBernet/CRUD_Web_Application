@@ -59,7 +59,8 @@
   flashMessages();
   ?>
 
-
+<br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div class="login-box">
   <span class="Titre" style="text-align:center;"> Register Form </span>
 
