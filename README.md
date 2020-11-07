@@ -6,7 +6,7 @@
 ***What it's looks like ?***
 
 ![Recordit GIF](Screenshot_ReadMe/Presentation2.gif)
-
+It's way smoother in reality, just the gif had to have few fps to be hosted on github. 
 ---
 
 ## Table of Contents 
