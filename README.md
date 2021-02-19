@@ -114,7 +114,7 @@ If there is some error check your database and your port number.
 On this application i implemetended multiples features such as :
  - Login/Register/Logout possibility linked to our DataBase
  - Complete CRUD application
- - Posibility to read/edit/delete only the profile created your own userprofile. 
+ - Posibility to read/edit/delete only the profile created with your own userprofile. 
  - Data validation all over our forms (via php and some java alert), using Session to set flash message
  - All forms use Session to avoid reloading the page and get anoying pops up and ressending data to our database with only Post.
  - Night mode button using Java script to change css of our whole website, using changment of CSS on the DOM and saving those on localstorage
