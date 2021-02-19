@@ -273,11 +273,6 @@ footer .header-container {
 
 .footer-open-img {
   cursor: help;
-  max-width: 30vmin;
-  height: auto;
-  -webkit-transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
-  transition: -webkit-box-shadow 0.7s, -webkit-transform 2s;
-  transition: box-shadow 0.7s, transform 2s;
-  transition: box-shadow 0.7s, transform 2s, -webkit-box-shadow 0.7s, -webkit-transform 2s;
+  width: 15px;
 }
 /*# sourceMappingURL=header.css.map */

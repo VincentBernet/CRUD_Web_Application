@@ -52,7 +52,7 @@
 
     
     <button id="Night-button" name="Night">Night Mode</button>
-    <audio id="myAudio"  src="ressource/click.mp3" type="audio/mpeg"></audio>
+    <audio id="myAudio"  src="Ressource/click.mp3" type="audio/mpeg"></audio>
   <script type='text/javascript'>
     $(document).ready(function (){
     document.getElementById('Night-button').addEventListener('click', function () {

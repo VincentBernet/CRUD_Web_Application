@@ -5,7 +5,7 @@
 
 
 <?php
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=crud', 'Admin', '1234');
+$pdo = new PDO('mysql:host=sql311.epizy.com;port=3306;dbname=epiz_27964721_Crud', 'epiz_27964721', 'PJAC21pt1tg');
 // See the "errors" folder for details...
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
