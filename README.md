@@ -14,7 +14,7 @@
 
 ## Table of Contents 
 
-- [Local Installation](#installation)
+- [Installation](#LocalInstallation)
 - [Features](#features)
 - [Team](#team)
 - [Contact](#Contact)
