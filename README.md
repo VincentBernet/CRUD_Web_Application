@@ -14,14 +14,14 @@
 
 ## Table of Contents 
 
-- [Installation](#installation)
+- [Installation](#Local installation)
 - [Features](#features)
 - [Team](#team)
 - [Contact](#Contact)
 
 ---
 
-## Installation
+## Local Installation
 
 First you need to have a local server environment like MAMP or XAMP <br /><br />
 1] Download the whole github folder in your htdocs folder <br />
