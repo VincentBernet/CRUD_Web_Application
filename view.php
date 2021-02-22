@@ -60,7 +60,7 @@ session_start();
     echo('</ul>');
 
     // Display Position information of the selected profile
-    $stmt = $pdo->prepare("SELECT year,description FROM position  WHERE profile_id= :profile_id");
+    $stmt = $pdo->prepare("SELECT year,description FROM Position  WHERE profile_id= :profile_id");
     $stmt -> execute(array
     (
       ':profile_id' => $_REQUEST['profile_id']

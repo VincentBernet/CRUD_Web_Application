@@ -160,6 +160,7 @@ function insertEducations($pdo, $profile_id)
     $rank++;
   }
 }
+
 function flashMessages()
 {
   if (isset($_SESSION['message']))

@@ -35,13 +35,15 @@
         }
         else
         {
+        $salt = 'XyZzy12*_';
+        $HashPassword = hash('md5', $salt.$_POST['password']);
         $sql = "INSERT INTO users(name,password, email) VALUES (:name,:password,:email)";
         $result1 = $pdo->prepare($sql);
         $result1->execute(array
         (
 
         ':name' => htmlentities($_POST['name']),
-        ':password' => htmlentities($_POST['password']),
+        ':password' => htmlentities($HashPassword),
         ':email' => htmlentities($_POST['email'])
       ));
         $_SESSION["message"]="<div style='color:green; text-align: center;'>You are register. Welcome !</div>";

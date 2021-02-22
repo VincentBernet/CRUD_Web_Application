@@ -50,8 +50,8 @@ include('header.php');?>
   // When we are login-in : display seconde version of our index file
   else
   {
-  //echo("<div class='Titre'><br>Welcome to :".$_SESSION['name']);
-  //echo("<br>Your Team's dashboard </div>");
+  echo("<div class='Titre'><br>Welcome to : ".$_SESSION['name']);
+  echo("<br>Your Team's dashboard </div>");
   echo('<table border="1" id="myTable">'."\n");
   echo('<br><br><br><br>');
   // Display few data information of our user, with the option to edit, delete or view them in more detail
@@ -71,7 +71,7 @@ include('header.php');?>
       }
       else
       {
-        echo('Can\'t access');
+        echo('No authorization to update or delete');
       }
       echo("</td></tr>\n");}
 
@@ -84,7 +84,7 @@ include('header.php');?>
 </body>
 
 <?php
-// We call our header page
+// We call our footer page
 include('footer.php');?>
 </html>
 

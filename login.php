@@ -91,11 +91,11 @@
   <!-- Our login form -->
 <div class="login-box">
   <div class="Titre2">Please Log In</div>
-  <form method="POST" action="login.php">
+  <form method="POST" action="login.php" autocomplete="off">
 
     <div class="user-box">
       <p>Email:
-        <input type="text" name="email" id="email">
+        <input type="text" name="email" id="email" >
       </p>
     </div>
     <span class="user-box">
@@ -115,11 +115,11 @@
   </form>
 <p>
   For a password hint, view source and find an account and password hint   <!-- Hint:
-                                                                            The account is umsi@umich.edu
+                                                                            The account is vincent.bernet@gmail.com
                                                                             The password is the three character name of the
                                                                             programming language used in this class (all lower case)
                                                                             followed by 123. -->
-  in the HTML comments.
+  in the HTML comments. <br><br> Admin@gmail.com Mdp: Admin
 </p>
 <!-- Some JavaScript validation, with pop up alert if wrong value entered -->
 <script>
