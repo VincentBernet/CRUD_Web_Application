@@ -23,6 +23,13 @@ if (!isset($_SESSION["email"]))
   die("<div style='text-align:center;color:pink;weight:bold;font-size:35px;margin-top:10%;'>ACCESS DENIED<br> <a href='index.php'>Back to Index</a></div>");
 }
 
+// Second redirect to index.php if user wants to cancel
+if (isset($_POST['cancel']))
+{
+  header("Location: index.php");
+  return;
+}
+
 // Guardian: Make sure that profile_id is present
 if ( ! isset($_GET['profile_id']) )
 {
@@ -32,15 +39,27 @@ if ( ! isset($_GET['profile_id']) )
 }
 
 // Guardian 2: Check if now the profile_id exist and is valid.
-$stmt = $pdo->prepare("SELECT first_name,last_name, profile_id FROM profile where profile_id = :xyz");
-$stmt->execute(array(":xyz" => $_GET['profile_id']));
+$stmt = $pdo->prepare("SELECT first_name,last_name, profile_id FROM profile where profile_id = :profile_id");
+$stmt->execute(array(":profile_id" => $_GET['profile_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false )
 {
-    $_SESSION['message'] = '<span style="color:red;text-align:center;">Bad value for profile_id</span>';
+    $_SESSION['message'] = '<span style="color:red;text-align:center;">This profile_id doesn\'t exist</span>';
     header( 'Location: index.php' ) ;
     return;
 }
+
+// Guardian 3: Check if the profile selected to be deleted was created by the current user.
+$stmt = $pdo->prepare("SELECT first_name,last_name, profile_id FROM profile where profile_id = :profile_id And user_id = :user_id");
+$stmt->execute(array(":profile_id" => $_GET['profile_id'], ":user_id" => $_GET['user_id']));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+if ( $row === false )
+{
+    $_SESSION['message'] = '<span style="color:red;text-align:center;">You can\'t delete a profile that is not created by your account !</span>';
+    header( 'Location: index.php' ) ;
+    return;
+}
+
 
 // If submit button to delete have been pressed then we delete via sql Querry the profile_id selected previously
 if ( isset($_POST['delete']) && isset($_POST['profile_id']) )
@@ -64,10 +83,57 @@ if ( isset($_POST['delete']) && isset($_POST['profile_id']) )
   <form method="post">
     <span class="Titre"> Delete the profile <?= $row['profile_id'] ?> from the data base </span>
     <!-- htmlentities here to ensure that non htmlinjection are possible -->
-    <p >Confirm: Deleting <?= htmlentities($row['first_name'])." ".htmlentities($row['last_name']) ?></p>
+    <p >Confirm Deleting "<?= htmlentities($row['first_name'])." ".htmlentities($row['last_name']) ?>"</p>
+ 
+    <?php
+  
+    // Display profile information from the eponymic table.
+    $stmt = $pdo->prepare("SELECT first_name,last_name,email,headline,summary FROM profile  WHERE profile_id= :profile_id");
+    $stmt -> execute(array
+    (
+      ':profile_id' => $_GET['profile_id']
+    ));
+    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
+    {
+        echo("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email : ".htmlentities($row['email'])." </p>");
+        echo("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Headline : ".htmlentities($row['headline'])." </p>");
+        echo("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Summary : ".htmlentities($row['summary'])." </p>");
+    }
+
+    // Display Education information of the selected profile, inaddition of some data of Institution table
+    $stmt = $pdo->prepare("Select year,name FROM Education JOIN Institution
+      ON Education.institution_id = Institution.institution_id
+      WHERE profile_id = :profile_id ORDER BY rank");
+    $stmt -> execute(array
+    (
+      ':profile_id' => $_GET['profile_id']
+    ));
+    echo("<p> Education : <ul></p>");
+    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
+    {
+      echo("<li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Year ".htmlentities($row['year']).": ");
+      echo(" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".htmlentities($row['name'])." </li>");
+    }
+    echo('</ul>');
+
+    // Display Position information of the selected profile
+    $stmt = $pdo->prepare("SELECT year,description FROM Position  WHERE profile_id= :profile_id");
+    $stmt -> execute(array
+    (
+      ':profile_id' => $_GET['profile_id']
+    ));
+    echo("<p> Position : <ul></p>");
+    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
+    {
+      echo("<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Year ".htmlentities($row['year']).": ");
+      echo(" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".htmlentities($row['description'])." </li>");
+    }
+    echo('</ul>');
+  ?>
     <input  type="hidden" name="profile_id" value="<?= $row['profile_id'] ?>">
     <input class="myButton" type="submit" value="Delete" name="delete">
-    <a href="index.php" class="myButton" >Cancel</a>
+    <input class="myButton" type="submit" name ="cancel" value="Cancel"/>
+
   </form>
 
 </body>

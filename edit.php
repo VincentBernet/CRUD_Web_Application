@@ -6,7 +6,6 @@
 require_once "pdo.php";
 require_once "utility.php";
 session_start();
-require_once "header.php";
 ?>
 
 <!DOCTYPE html>
@@ -29,16 +28,22 @@ if (!isset($_SESSION['email']))
   die("<div style='text-align:center;color:pink;weight:bold;font-size:35px;margin-top:10%;'>ACCESS DENIED<br> <a href='index.php'>Back to Index</a></div>");
 }
 
+// Second redirect to index.php if user wants to cancel
+if (isset($_POST['cancel']))
+{
+  header("Location: index.php");
+  return;
+}
+
 // Third make sure the REQUEST parameter is present
 if (! isset($_REQUEST['profile_id']))
 {
-  $_SESSION['message'] = "<span style='color:yellow;text-align:cernet;weight:bold;'>Missing profile_id</span>";
+  $_SESSION['message'] = "<span style='color:red;text-align:cernet;weight:bold;'>Missing profile_id</span>";
   header('Location: index.php');
   return;
 }
 
-// Fourth : Flash Message -> print the result of our login / add / Logout / register action
-flashMessages();
+
 
 // Fifth: We can now start obsverving our data in our form and proceed to the update
 if ( isset($_POST['first_name']) && isset($_POST['last_name'])&& isset($_POST['email'])&& isset($_POST['headline']) && isset($_POST['summary']) )
@@ -49,23 +54,27 @@ if ( isset($_POST['first_name']) && isset($_POST['last_name'])&& isset($_POST['e
   // Data validation in our utility file on Position related inputs, if false we stop and print the error on the same page
   $msg2 = validatePos();
   // Data validation in our utility file on Education related inputs, if false we stop and print the error on the same page
-
+  $msg3 = validateEdu();
   if (is_string($msg1))
   {
     $_SESSION['message'] = $msg1;
-    flashMessages();
+    header('Location: edit.php?profile_id='. $_REQUEST["profile_id"]);
+    return;
   }
 
   else if (is_string($msg2))
   {
     $_SESSION['message'] = $msg2;
-    flashMessages();
+    header('Location: edit.php?profile_id='. $_REQUEST["profile_id"]);
+    return;
   }
   else if (is_string($msg3))
   {  
     $_SESSION['message'] = $msg3;
-    flashMessages();
+    header('Location: edit.php?profile_id='. $_REQUEST["profile_id"]);
+    return;
   }
+
   else {
   //Begin to update our DataBase Profiles
   $sql = "UPDATE profile SET first_name = :first_name, last_name = :last_name, email = :email, headline = :headline, summary = :summary
@@ -96,7 +105,7 @@ if ( isset($_POST['first_name']) && isset($_POST['last_name'])&& isset($_POST['e
   insertEducations($pdo, $_REQUEST['profile_id']);
 
   $_SESSION['message'] = '<span style="color:green;weight:bold;text-aligne:center;">Record Updated</span>';
-  flashMessages();
+  header("Location: index.php");
   return;
 }}
 
@@ -109,8 +118,19 @@ $stmt = $pdo->prepare("SELECT * FROM profile where profile_id = :profile_id");
 $stmt->execute(array(":profile_id" => $_GET['profile_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {
-    $_SESSION['message'] = '<span style="color:red;weight:bold;text-aligne:center;">Bad value for profile_id, this profile don\'t exist</span>';
-    flashMessages();
+    $_SESSION['message'] = '<span style="color:red;weight:bold;text-aligne:center;">Bad value for profile_id, this profile doesn\'t exist</span>';
+   
+    header("Location: index.php");
+    return;
+}
+
+// Seventh : Verify if this profile_id is link to our current user_id
+$stmt = $pdo->prepare("SELECT * FROM profile where profile_id = :profile_id AND user_id= :user_id");
+$stmt->execute(array(":profile_id" => $_GET['profile_id'],":user_id" => $_GET['user_id'] ));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+if ( $row === false ) {
+    $_SESSION['message'] = '<span style="color:red;weight:bold;text-aligne:center;">You can\'t modify a profile that was not create by your account</span>';
+    header("Location: index.php");
     return;
 }
 
@@ -123,6 +143,9 @@ $v =  htmlentities($row['summary']);
 $y = htmlentities($row['profile_id']);
 $profile_id = $row['profile_id'];
 
+require_once "header.php";
+//  Flash Message -> print the result of our login / add / Logout / register action
+flashMessages();
 ?>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- View part : Our Edit form -->
@@ -209,7 +232,9 @@ $profile_id = $row['profile_id'];
           <span></span>
           <input class="myButton" type="hidden" name="profile_id" value="<?= $y ?>"/>
           <input class="myButton" type="submit" value="Save">
-          <a id="CancelButton" href="http://crud-vb.epizy.com/index.php">Cancel</a>
+          <input class="myButton" type="submit" name ="cancel" value="Cancel"/>
+
+          <!--<a id="CancelButton" href="http://crud-vb.epizy.com/index.php">Cancel</a>-->
         </a>
       </p>
   </form>

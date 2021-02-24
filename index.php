@@ -67,7 +67,7 @@ include('header.php');?>
       if ($row['user_id']==$_SESSION['user_id'])
       {
         echo('<a class="linkChange2" href="edit.php?profile_id='.$row['profile_id'].'&user_id='.$row['user_id'].'">Edit</a> / ');
-        echo('<a class="linkChange2" href="delete.php?profile_id='.$row['profile_id'].'">Delete</a>');
+        echo('<a class="linkChange2" href="delete.php?profile_id='.$row['profile_id'].'&user_id='.$row['user_id'].'">Delete</a>');
       }
       else
       {

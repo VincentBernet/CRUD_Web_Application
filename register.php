@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="index.css">
 <meta charset="UTF-8" />
 <body>
-
   <!-- Model Part, simple insert operation via our form to create new user which will be able to manipulate the database after the login-phase, with some data validation before it -->
   <?php
     if (isset($_POST['cancel']))

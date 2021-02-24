@@ -8,7 +8,6 @@
   require_once "pdo.php";
   require_once "utility.php";
   session_start();
-  require_once 'header.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,15 +29,19 @@
 <body>
 
   <?php
+  
     // First check if the user is logged in
     if (!isset($_SESSION['email']))
     {
       die("<div style='text-align:center;color:pink;weight:bold;font-size:35px;margin-top:10%;'>ACCESS DENIED<br> YOU NEED TO BE LOGED IN TO INTERACT WITH PROFILE<br> <a href='index.php'>Back to Index</a></div>");
     }
+    // Second redirect to index.php if user wants to cancel
+    if (isset($_POST['cancel']))
+    {
+      header("Location: index.php");
+      return;
+    }
 
-
-    // Third : Flash Message -> print the result of our login / add / Logout / register action
-    flashMessages();
 
     // Fourth : If our add button have been pressed then we check values validity then via sql Querry we insert new data
     if ( isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email']) && isset($_POST['headline']) && isset($_POST['summary']) )
@@ -53,21 +56,22 @@
         if (is_string($msg1))
         {
           $_SESSION['message'] = $msg1;
-          flashMessages();
+          header("Location: add.php");
+          return;
         }
           
         else if (is_string($msg2))
           {
-            
             $_SESSION['message'] = $msg2;
-            flashMessages();
+            header("Location: add.php");
+            return;
           }
 
         else if (is_string($msg3))
           {
-            
             $_SESSION['message'] = $msg3;
-            flashMessages();
+            header("Location: add.php");
+            return;
           }
 
         else {
@@ -97,9 +101,13 @@
 
           // Message of validation in SESSION then we redirect to index.php
           $_SESSION["message"]="<div style='color:green; text-align: center;'>Your new profile as been added</div>";
-          flashMessages();
+          header("Location: index.php");
+          return;
         }
       }
+      require_once 'header.php';
+      // Third : Flash Message -> print the result of our login / add / Logout / register action
+      flashMessages();
   ?>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -173,7 +181,9 @@
       <span></span>
       <span></span>
       <input class = "myButton" type="submit" value="Add" action="/"/>
-      <a id="CancelButton" href="http://crud-vb.epizy.com/index.php">Cancel</a>
+      <input class="myButton" type="submit" name ="cancel" value="Cancel"/>
+
+      <!--<a id="CancelButton" href="http://crud-vb.epizy.com/index.php">Cancel</a>-->
     </a>
   </form>
 
