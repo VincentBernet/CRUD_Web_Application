@@ -29,13 +29,6 @@ if (!isset($_SESSION['email']))
   die("<div style='text-align:center;color:pink;weight:bold;font-size:35px;margin-top:10%;'>ACCESS DENIED<br> <a href='index.php'>Back to Index</a></div>");
 }
 
-// Second if the user requested cancel go back to index.php
-if (isset($_POST['cancel']))
-{
-  header("Location: index.php");
-  return;
-}
-
 // Third make sure the REQUEST parameter is present
 if (! isset($_REQUEST['profile_id']))
 {
@@ -51,34 +44,29 @@ flashMessages();
 if ( isset($_POST['first_name']) && isset($_POST['last_name'])&& isset($_POST['email'])&& isset($_POST['headline']) && isset($_POST['summary']) )
 {
 
-  // Data validation of basic inputs in our utility file, if false we stop and print the error on the index
-  $msg = validateProfile2();
-  if (is_string($msg))
+  // Data validation of basic inputs in our utility file, if false we stop and print the error on the same page
+  $msg1 = validateProfile2();
+  // Data validation in our utility file on Position related inputs, if false we stop and print the error on the same page
+  $msg2 = validatePos();
+  // Data validation in our utility file on Education related inputs, if false we stop and print the error on the same page
+
+  if (is_string($msg1))
   {
-    $_SESSION['message'] = $msg;
-    header('Location: edit.php?profile_id='. $_REQUEST["profile_id"]);
-    return;
+    $_SESSION['message'] = $msg1;
+    flashMessages();
   }
 
-  // Data validation in our utility file on Position related inputs, if false we stop and print the error on the index
-  $msg = validatePos();
-  if (is_string($msg))
+  else if (is_string($msg2))
   {
-    $_SESSION['message'] = $msg;
-    header('Location: edit.php?profile_id='. $_REQUEST["profile_id"]);
-    return;
+    $_SESSION['message'] = $msg2;
+    flashMessages();
   }
-
-
-  // Data validation in our utility file on Education related inputs, if false we stop and print the error on the index
-  $msg = validateEdu();
-  if (is_string($msg))
-  {
-    $_SESSION['message'] = $msg;
-    header('Location: edit.php?profile_id='. $_REQUEST["profile_id"]);
-    return;
+  else if (is_string($msg3))
+  {  
+    $_SESSION['message'] = $msg3;
+    flashMessages();
   }
-
+  else {
   //Begin to update our DataBase Profiles
   $sql = "UPDATE profile SET first_name = :first_name, last_name = :last_name, email = :email, headline = :headline, summary = :summary
           WHERE profile_id=:profile_id AND user_id= :user_id";
@@ -108,9 +96,9 @@ if ( isset($_POST['first_name']) && isset($_POST['last_name'])&& isset($_POST['e
   insertEducations($pdo, $_REQUEST['profile_id']);
 
   $_SESSION['message'] = '<span style="color:green;weight:bold;text-aligne:center;">Record Updated</span>';
-  header( 'Location: index.php' ) ;
+  flashMessages();
   return;
-}
+}}
 
 //load up all the positions and educations rows
 $positions=loadPos($pdo,$_REQUEST['profile_id']);
@@ -121,8 +109,8 @@ $stmt = $pdo->prepare("SELECT * FROM profile where profile_id = :profile_id");
 $stmt->execute(array(":profile_id" => $_GET['profile_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {
-    $_SESSION['message'] = '<span style="color:red;weight:bold;text-aligne:center;">Bad value for profile_id</span>';
-    header( 'Location: index.php' ) ;
+    $_SESSION['message'] = '<span style="color:red;weight:bold;text-aligne:center;">Bad value for profile_id, this profile don\'t exist</span>';
+    flashMessages();
     return;
 }
 
@@ -221,7 +209,7 @@ $profile_id = $row['profile_id'];
           <span></span>
           <input class="myButton" type="hidden" name="profile_id" value="<?= $y ?>"/>
           <input class="myButton" type="submit" value="Save">
-          <input class="myButton" type="submit" name="cancel" value="Cancel">
+          <a id="CancelButton" href="http://crud-vb.epizy.com/index.php">Cancel</a>
         </a>
       </p>
   </form>

@@ -87,5 +87,3 @@ include('header.php');?>
 // We call our footer page
 include('footer.php');?>
 </html>
-
-

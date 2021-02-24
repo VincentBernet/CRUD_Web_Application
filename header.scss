@@ -213,7 +213,7 @@ footer .header-container {
 }
 
 .twitter:hover {
-	background: red;
+	background: blue;
 	box-shadow: 0 0 2px 5px rgba(0, 140, 186, 0.5);
 }
 #footer {
@@ -221,6 +221,6 @@ footer .header-container {
 }
 
 .footer-open-img {
-	cursor: help;
-	width: 15px;
+	cursor: none;
+	width: 100px;
 }

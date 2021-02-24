@@ -29,7 +29,7 @@ function validateProfile2()
   }
   if (strpos($_POST['email'],'@')===false)
   {
-    return "Email address must contain @";
+    return "<p style='color:red; text-align:center'>Email address must contain @</p>";
   }
   return true;
 }

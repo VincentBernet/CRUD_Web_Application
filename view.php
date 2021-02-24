@@ -37,7 +37,7 @@ session_start();
     while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
     {
         echo("<p>First name : ".htmlentities($row['first_name'])." </p>");
-        echo("<p>Last name : ".htmlentities($row['last_name'])." </p>");
+        echo("<p>Last name : ".htmlentities($row['last_name'])." </p>"); 
         echo("<p>Email : ".htmlentities($row['email'])." </p>");
         echo("<p>Headline : ".htmlentities($row['headline'])." </p>");
         echo("<p>Summary : ".htmlentities($row['summary'])." </p>");
