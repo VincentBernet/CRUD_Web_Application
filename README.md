@@ -4,7 +4,7 @@
 This is complete Crud (Create, Read, Update, Delete) web application made during my spare-time when i was obtaining the [Web Application Certification](https://www.coursera.org/specializations/web-applications) from the University of Michigan on Coursera in 2019.  
 I used the following Stack :
 - **PHP** and **MySQL** 
-- **JavaScript**, **HTML5** and **CSS**
+- **JavaScript**, **HTML5** and **SCSS**
 
 You can play with it online here : [CRUD WEB APP](http://crud-vb.epizy.com/)  
 
