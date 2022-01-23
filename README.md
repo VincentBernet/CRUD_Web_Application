@@ -1,24 +1,25 @@
 # CRUD_Web_Application
 
 
-This is complete Crud (Create, Read, Update, Delete) web application made during my spare-time when i was obtaining the [Web Application Certification](https://www.coursera.org/specializations/web-applications) from the University of Michigan on Coursera in 2019.  
+This is complete Crud (Create, Read, Update, Delete) web application made during my spare-time when i was obtaining the **[Web Application Certification](https://www.coursera.org/specializations/web-applications)** from the **University of Michigan** on Coursera in 2019.  
 I used the following Stack :
 - **PHP** and **MySQL** 
 - **JavaScript**, **HTML5** and **SCSS**
 
-You can play with it online here : [CRUD WEB APP](http://crud-vb.epizy.com/)  
+---
 
-***What it's looks like ?*** 
+***What it looks like ?*** You can check it out aswell here : **[CRUD WEB APP](http://crud-vb.epizy.com/)**  
+
 ![Recordit GIF](Screenshot_ReadMe/Presentation2.gif)
->*⚠️ It's way smoother in reality, just the gif had to have very few FPS to be hosted on github.*
+>***⚠️ It's way smoother in reality, just the gif had to have very few FPS to be hosted on github.***
 
 ---
 
 ## Table of Contents 
 
-- [Features](#features)
-- [Local Installation](#Local-Installation)
-- [License](#License)
+- **[Features](#features)**
+- **[Local Installation](#Local-Installation)**
+- **[License](#License)**
 
 ---
 
@@ -132,4 +133,4 @@ If there is some error check your database and your port number.
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2021 © <a href="https://www.linkedin.com/in/vincent-bernet-028a64193/" target="_blank">Bernet Vincent Marie</a>.
+- Copyright 2021 © **<a href="https://www.linkedin.com/in/vincent-bernet-028a64193/" target="_blank">Bernet Vincent Marie</a>**.
