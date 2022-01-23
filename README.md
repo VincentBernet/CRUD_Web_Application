@@ -1,25 +1,40 @@
 # CRUD_Web_Application
 
 
-> This is Complete Crud (Create, Read, Update, Delete) Web Application !
-> <br/>You can play with it here : http://crud-vb.epizy.com/
+This is complete Crud (Create, Read, Update, Delete) web application made during my spare-time when i was obtaining the [Web Application Certification](https://www.coursera.org/specializations/web-applications) from the University of Michigan on Coursera in 2019.  
+I used the following Stack :
+- **PHP** and **MySQL** 
+- **JavaScript**, **HTML5** and **CSS**
+
+You can play with it online here : [CRUD WEB APP](http://crud-vb.epizy.com/)  
 
 ***What it's looks like ?*** 
-
 ![Recordit GIF](Screenshot_ReadMe/Presentation2.gif)
-<br/>
+>*⚠️ It's way smoother in reality, just the gif had to have very few FPS to be hosted on github.*
 
-*It's way smoother in reality, just the gif had to have few fps to be hosted on github.*
 ---
 
 ## Table of Contents 
 
-- [Installation](#Local-Installation)
 - [Features](#features)
-- [Contact](#Contact)
+- [Local Installation](#Local-Installation)
+- [License](#License)
 
 ---
 
+<a name='features'></a>
+## Features
+On this application i implemetended multiples features such as :
+ - Login/Register/Logout possibility linked to a sql DataBase
+ - Authentification then specific authorization -> Posibility to read/edit/delete only the profile created with your own userprofile 
+ - Data validation all over the forms (via php and some java alert), using Session to set flash message
+ - All forms use Session to avoid reloading the page and get anoying pops up and ressending data to our database with only Post.
+ - Night mode button using Java script to change css of the whole website, using changment of CSS on the DOM and saving those on localstorage
+ - Html and CSS injections protection via Html entities and using pdo to make the link beetween the page and the DataBase
+
+---
+
+<a name='Local-Installation'></a>
 ## Local Installation
 
 First you need to have a local server environment like MAMP or XAMP <br /><br />
@@ -28,7 +43,7 @@ First you need to have a local server environment like MAMP or XAMP <br /><br />
 (you can use the following code : CREATE DATABASE crud DEFAULT CHARACTER SET utf8 ;) <br />
 3] Go in Sql interface of this DataBase and copy paste the following Sql querrys : <br />
 
- ```
+ ``` sql
   GRANT ALL ON crud.* TO 'Admin'@'localhost' IDENTIFIED BY '1234';
   GRANT ALL ON crud.* TO 'Admin'@'127.0.0.1' IDENTIFIED BY '1234';
 
@@ -110,34 +125,8 @@ CREATE TABLE Education (
 5] Run the index.php file on your browser, if no SQL error's statement pop everything work !
 If there is some error check your database and your port number.
 
-## Features
-On this application i implemetended multiples features such as :
- - Login/Register/Logout possibility linked to our DataBase
- - Complete CRUD application
- - Posibility to read/edit/delete only the profile created with your own userprofile. 
- - Data validation all over our forms (via php and some java alert), using Session to set flash message
- - All forms use Session to avoid reloading the page and get anoying pops up and ressending data to our database with only Post.
- - Night mode button using Java script to change css of our whole website, using changment of CSS on the DOM and saving those on localstorage
- - Html and CSS injections protection via Html entities and using pdo to make the link beetween our page and our DataBase
-
 ---
-
-## Contact
-
-> Whole application was made by me when i was getting a coursera specialisation on web developpment :
-
- <a href="https://github.com/VincentBernet.com" target="_blank">**FullStack**</a> |
-|:---:|
-| [![FVCproductions](https://avatars3.githubusercontent.com/u/54962581?s=300)](https://github.com/VincentBernet.com)    |
-| <a target="_blank" rel="noopener noreferrer" href="https://github.com/VincentBernet">`github.com/BernetProductions`</a> |
-
-- Don't hesitate to contact me on Github or on Linkedin, i'm currently seeking for professional internship around Paris for October 2021 :
-
-[![Linkedin](https://thelinkedinman.com/wp-content/uploads/2016/02/View-my-LinkedIn-profile-image-3-300x140.png)](https://www.linkedin.com/in/vincent-bernet-028a64193/)
-
-
----
-
+<a name='License'></a>
 ## License
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
